@@ -4,7 +4,7 @@ import { useState, useEffect } from "react";
 import { motion } from "framer-motion";
 import { IconMail, IconLock, IconCheck, IconX } from "@tabler/icons-react";
 import { useRouter } from "next/navigation";
-import Image from "next/image";
+// import Image from "next/image";
 
 const LoginSignup = () => {
   const [activeTab, setActiveTab] = useState<"login" | "signup">("login");

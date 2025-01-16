@@ -1,7 +1,19 @@
+"use client";
 import React from "react";
+import { useRouter } from "next/navigation";
 import { FaFacebook, FaTwitter, FaInstagram, FaLinkedin, FaRocket } from "react-icons/fa";
 
 const Footer = () => {
+  const router = useRouter();
+
+  const navigateTo = (path: string) => {
+    router.push(path);
+  };
+
+  const openExternalLink = (url: string) => {
+    window.open(url, "_blank", "noopener,noreferrer");
+  };
+
   return (
     <footer className="bg-gray-100 text-gray-800 py-8 px-4">
       <div className="max-w-7xl mx-auto grid grid-cols-1 sm:grid-cols-3 gap-8">
@@ -20,16 +32,24 @@ const Footer = () => {
           <h3 className="text-lg font-bold mb-4">Quick Links</h3>
           <ul className="space-y-2 text-sm">
             <li>
-              <a href="/" className="hover:text-purple-500 transition">Home</a>
+              <button onClick={() => navigateTo("/")} className="hover:text-purple-500 transition">
+                Home
+              </button>
             </li>
             <li>
-              <a href="/adoption" className="hover:text-purple-500 transition">Adoption Process</a>
+              <button onClick={() => navigateTo("/adoption")} className="hover:text-purple-500 transition">
+                Adoption Process
+              </button>
             </li>
             <li>
-              <a href="/about" className="hover:text-purple-500 transition">About Us</a>
+              <button onClick={() => navigateTo("/about")} className="hover:text-purple-500 transition">
+                About Us
+              </button>
             </li>
             <li>
-              <a href="/contact" className="hover:text-purple-500 transition">Contact</a>
+              <button onClick={() => navigateTo("/contact")} className="hover:text-purple-500 transition">
+                Contact
+              </button>
             </li>
           </ul>
         </div>
@@ -38,18 +58,18 @@ const Footer = () => {
         <div>
           <h3 className="text-lg font-bold mb-4">Follow Us</h3>
           <div className="flex space-x-4 text-purple-500">
-            <a href="https://facebook.com" target="_blank" rel="noopener noreferrer" className="hover:text-purple-700">
+            <button onClick={() => openExternalLink("https://facebook.com")} className="hover:text-purple-700">
               <FaFacebook size={20} />
-            </a>
-            <a href="https://twitter.com" target="_blank" rel="noopener noreferrer" className="hover:text-purple-700">
+            </button>
+            <button onClick={() => openExternalLink("https://twitter.com")} className="hover:text-purple-700">
               <FaTwitter size={20} />
-            </a>
-            <a href="https://instagram.com" target="_blank" rel="noopener noreferrer" className="hover:text-purple-700">
+            </button>
+            <button onClick={() => openExternalLink("https://instagram.com")} className="hover:text-purple-700">
               <FaInstagram size={20} />
-            </a>
-            <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer" className="hover:text-purple-700">
+            </button>
+            <button onClick={() => openExternalLink("https://linkedin.com")} className="hover:text-purple-700">
               <FaLinkedin size={20} />
-            </a>
+            </button>
           </div>
         </div>
       </div>

@@ -1,5 +1,5 @@
 "use client";
-import React, { useState, useEffect } from "react";
+import React, { useState} from "react";
 import { motion } from "framer-motion";
 import { FaPlus, FaMinus, FaRocket, FaShoppingCart, FaStar, FaHeart } from "react-icons/fa";
 import { ToastContainer, toast } from "react-toastify";
