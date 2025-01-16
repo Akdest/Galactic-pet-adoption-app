@@ -1,5 +1,5 @@
 "use client";
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import { motion } from "framer-motion";
 import { IconMail, IconLock, IconCheck, IconX } from "@tabler/icons-react";
 import { useRouter } from "next/navigation";
@@ -7,9 +7,7 @@ import { useRouter } from "next/navigation";
 const LoginSignup = () => {
   const [activeTab, setActiveTab] = useState<"login" | "signup">("login");
   const [authError, setAuthError] = useState("");
-  const [isClient, setIsClient] = useState(false);
   const router = useRouter();
-
 
   // Mock credentials
   const mockCredentials = {
