@@ -37,7 +37,6 @@ const NAVLINKS = [
 
 export default function Navbar() {
   const [openSubMenu, setOpenSubMenu] = useState<number | null>(null);
-  const [hoveredMenu, setHoveredMenu] = useState<number | null>(null);
   const [isScrolled, setIsScrolled] = useState(false);
 
   const handleMenuClick = (index: number) => {
@@ -119,7 +118,6 @@ export default function Navbar() {
                       <Link
                         href={href}
                         className="block text-white lg:text-lg font-bold hover:text-blue-400"
-                        onMouseEnter={() => setHoveredMenu(index)}
                         onClick={() => handleMenuClick(index)}
                       >
                         {text}
