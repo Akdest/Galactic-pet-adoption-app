@@ -10,9 +10,6 @@ const LoginSignup = () => {
   const [isClient, setIsClient] = useState(false);
   const router = useRouter();
 
-  useEffect(() => {
-    setIsClient(true);
-  }, []);
 
   // Mock credentials
   const mockCredentials = {
