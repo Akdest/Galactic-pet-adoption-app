@@ -1,10 +1,8 @@
 "use client";
-
 import { useState, useEffect } from "react";
 import { motion } from "framer-motion";
 import { IconMail, IconLock, IconCheck, IconX } from "@tabler/icons-react";
 import { useRouter } from "next/navigation";
-// import Image from "next/image";
 
 const LoginSignup = () => {
   const [activeTab, setActiveTab] = useState<"login" | "signup">("login");
@@ -46,20 +44,16 @@ const LoginSignup = () => {
 
       <div className="z-10 flex justify-center w-full max-w-4xl p-8 bg-gradient-to-br from-gray-800 to-gray-700 shadow-2xl rounded-2xl border border-gray-600">
         <div className="flex-1 flex flex-col justify-center items-center md:items-start">
-          <div className="absolute top-4 left-4 text-white text-3xl font-extrabold bg-gradient-to-r from-pink-500 to-purple-500 bg-clip-text text-transparent">
+          {/* Slogan Text */}
+          <div className="text-white text-3xl font-extrabold bg-gradient-to-r from-pink-500 to-purple-500 bg-clip-text text-transparent">
             Galactic Pet Adoption
           </div>
-
           <p className="text-gray-300 text-lg mt-2 text-center md:text-left">
             Find your perfect intergalactic companion! <span className="text-teal-500">Join the galaxy now!</span>
           </p>
 
-          <motion.div
-            className="mt-10 flex flex-col items-center space-y-4 sm:space-y-8"
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ duration: 1 }}
-          >
+          {/* Tabs (Login and Sign Up) */}
+          <div className="mt-10 flex space-x-6">
             <button
               onClick={() => {
                 setActiveTab("login");
@@ -86,13 +80,15 @@ const LoginSignup = () => {
             >
               Sign Up
             </button>
-          </motion.div>
+          </div>
 
+          {/* Error message */}
           {authError && (
             <div className="text-red-500 font-medium text-center mt-4">{authError}</div>
           )}
         </div>
 
+        {/* Form (Login/Signup) */}
         <motion.div
           key={activeTab}
           initial={{ opacity: 0, x: activeTab === "login" ? 50 : -50 }}
@@ -125,24 +121,32 @@ const LoginForm = ({ onSubmit }: { onSubmit: (email: string, password: string) =
       className="space-y-6"
     >
       <div className="relative">
-        <IconMail className="absolute top-1/2 left-3 transform -translate-y-1/2 text-purple-500" />
-        <input
-          type="email"
-          placeholder="Email Address"
-          className="w-full pl-12 py-3 bg-gray-800 text-gray-200 border border-gray-600 rounded-lg focus:ring-2 focus:ring-purple-500 outline-none"
-          value={email}
-          onChange={(e) => setEmail(e.target.value)}
-        />
+        <label htmlFor="email" className="text-gray-300 text-sm font-semibold">Email Address</label>
+        <div className="relative">
+          <IconMail className="absolute top-1/2 left-3 transform -translate-y-1/2 text-purple-500" />
+          <input
+            id="email"
+            type="email"
+            placeholder="Enter your email"
+            className="w-full pl-12 py-3 bg-gray-800 text-gray-200 border border-gray-600 rounded-lg focus:ring-2 focus:ring-purple-500 outline-none"
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
+          />
+        </div>
       </div>
       <div className="relative">
-        <IconLock className="absolute top-1/2 left-3 transform -translate-y-1/2 text-blue-500" />
-        <input
-          type="password"
-          placeholder="Password"
-          className="w-full pl-12 py-3 bg-gray-800 text-gray-200 border border-gray-600 rounded-lg focus:ring-2 focus:ring-blue-500 outline-none"
-          value={password}
-          onChange={(e) => setPassword(e.target.value)}
-        />
+        <label htmlFor="password" className="text-gray-300 text-sm font-semibold">Password</label>
+        <div className="relative">
+          <IconLock className="absolute top-1/2 left-3 transform -translate-y-1/2 text-blue-500" />
+          <input
+            id="password"
+            type="password"
+            placeholder="Enter your password"
+            className="w-full pl-12 py-3 bg-gray-800 text-gray-200 border border-gray-600 rounded-lg focus:ring-2 focus:ring-blue-500 outline-none"
+            value={password}
+            onChange={(e) => setPassword(e.target.value)}
+          />
+        </div>
       </div>
       <button
         type="submit"
@@ -183,21 +187,23 @@ const SignupForm = ({ onSubmit }: { onSubmit: (email: string, password: string) 
       className="space-y-6"
     >
       <div className="relative">
-        <IconMail className="absolute top-1/2 left-3 transform -translate-y-1/2 text-teal-500" />
+        <label htmlFor="email" className="text-gray-300 text-sm font-semibold">Email Address</label>
         <input
+          id="email"
           type="email"
-          placeholder="Email Address"
-          className="w-full pl-12 py-3 bg-gray-800 text-gray-200 border border-gray-600 rounded-lg focus:ring-2 focus:ring-teal-500 outline-none"
+          placeholder="Enter your email"
+          className="w-full pl-4 py-3 bg-gray-800 text-gray-200 border border-gray-600 rounded-lg focus:ring-2 focus:ring-teal-500 outline-none"
           value={email}
           onChange={(e) => setEmail(e.target.value)}
         />
       </div>
       <div className="relative">
-        <IconLock className="absolute top-1/2 left-3 transform -translate-y-1/2 text-green-500" />
+        <label htmlFor="password" className="text-gray-300 text-sm font-semibold">Password</label>
         <input
+          id="password"
           type="password"
-          placeholder="Password"
-          className="w-full pl-12 py-3 bg-gray-800 text-gray-200 border border-gray-600 rounded-lg focus:ring-2 focus:ring-green-500 outline-none"
+          placeholder="Enter your password"
+          className="w-full pl-4 py-3 bg-gray-800 text-gray-200 border border-gray-600 rounded-lg focus:ring-2 focus:ring-green-500 outline-none"
           value={password}
           onChange={(e) => handlePasswordChange(e.target.value)}
         />
