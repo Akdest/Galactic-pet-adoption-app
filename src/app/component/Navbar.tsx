@@ -14,6 +14,10 @@ const NAVLINKS = [
     text: "LOGIN",
   },
   {
+    href: "/pages/AdoptionList",
+    text: "ADOPTION LIST",
+  },
+  {
     href: "",
     text: "SERVICES",
     subMenu: [
