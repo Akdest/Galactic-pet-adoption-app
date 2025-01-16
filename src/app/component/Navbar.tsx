@@ -39,7 +39,6 @@ export default function Navbar() {
   const [openSubMenu, setOpenSubMenu] = useState<number | null>(null);
   const [hoveredMenu, setHoveredMenu] = useState<number | null>(null);
   const [isScrolled, setIsScrolled] = useState(false);
-  const [shuffledImages, setShuffledImages] = useState(IMAGE_DETAILS);
 
   const handleMenuClick = (index: number) => {
     setOpenSubMenu(openSubMenu === index ? null : index);
@@ -63,17 +62,13 @@ export default function Navbar() {
     };
   }, []);
 
-  // Shuffle images based on hovered menu
-  useEffect(() => {
-    if (hoveredMenu !== null) {
-      const shuffled = [...IMAGE_DETAILS];
-      for (let i = shuffled.length - 1; i > 0; i--) {
-        const j = Math.floor(Math.random() * (i + 1));
-        [shuffled[i], shuffled[j]] = [shuffled[j], shuffled[i]];
-      }
-      setShuffledImages(shuffled);
-    }
-  }, [hoveredMenu]);
+  // Shuffle images when hovering over menu
+  const [shuffledImages, setShuffledImages] = useState(IMAGE_DETAILS);
+
+  const shuffleImages = () => {
+    const shuffled = [...IMAGE_DETAILS].sort(() => Math.random() - 0.5);
+    setShuffledImages(shuffled);
+  };
 
   return (
     <Disclosure as="nav" className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${isScrolled ? 'bg-white' : 'bg-transparent'}`}>
@@ -117,8 +112,8 @@ export default function Navbar() {
           >
             <Disclosure.Panel className="fixed inset-0 bg-black bg-opacity-85 z-40 flex flex-col">
               {/* First Column - Main Menu */}
-              <div className="h-full flex">
-                <div className="w-1/4 p-8 overflow-y-auto mt-16 border-r-2 border-white">
+              <div className="h-full flex flex-col sm:flex-row">
+                <div className="w-full sm:w-1/4 p-8 overflow-y-auto mt-16 border-r-2 border-white">
                   {NAVLINKS.map(({ href, text, subMenu }, index) => (
                     <div key={href} className="mb-6">
                       <Link
@@ -130,18 +125,26 @@ export default function Navbar() {
                         {text}
                         {subMenu && (
                           <ChevronRight
-                            className={`inline-block h-6 w-6 ${
-                              openSubMenu === index ? "rotate-90" : ""
-                            } transition-transform duration-200`}
+                            className={`inline-block h-6 w-6 ${openSubMenu === index ? "rotate-90" : ""} transition-transform duration-200`}
                           />
                         )}
                       </Link>
+                      {/* Submenu visible only for sm devices */}
+                      {openSubMenu === index && subMenu && (
+                        <div className="mt-4 sm:block hidden md:hidden lg:hidden">
+                          {subMenu.map(({ href, text }) => (
+                            <Link key={href} href={href} className="block text-white text-lg">
+                              {text}
+                            </Link>
+                          ))}
+                        </div>
+                      )}
                     </div>
                   ))}
                 </div>
 
-                {/* Second Column - Submenu */}
-                <div className="w-1/4 p-8 mt-16">
+                {/* Second Column - Submenu (hidden for sm devices only) */}
+                <div className="w-full sm:w-1/4 p-8 mt-16 sm:hidden md:block lg:block">
                   {openSubMenu !== null &&
                     NAVLINKS[openSubMenu].subMenu &&
                     NAVLINKS[openSubMenu].subMenu.map(({ href, text }) => (
@@ -151,13 +154,14 @@ export default function Navbar() {
                     ))}
                 </div>
 
-                {/* Third Column - Animated Photo Grid */}
-                <div className="w-1/2 p-8 bg-cover relative hidden sm:block">
+                {/* Third Column - Animated Photo Grid (hidden for sm and md devices) */}
+                <div className="w-full sm:w-1/2 md:hidden p-8 bg-cover relative hidden lg:flex items-center justify-center">
                   <motion.div
-                    className="grid grid-rows-4 grid-cols-4  gap-1 mx-auto my-auto justify-center items-center"
+                    className="grid grid-rows-4 grid-cols-4 gap-1 mx-auto my-auto justify-center items-center"
                     initial={{ opacity: 0 }}
                     animate={{ opacity: 1 }}
                     transition={{ duration: 0.5 }}
+                    onMouseEnter={shuffleImages} // Shuffle images when hovering over menu
                   >
                     {shuffledImages.map((image, idx) => (
                       <motion.img
