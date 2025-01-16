@@ -38,7 +38,7 @@ export const AnimatedTestimonials = ({
       const interval = setInterval(handleNext, 5000);
       return () => clearInterval(interval);
     }
-  }, [autoplay, testimonials]); // Depend on both `autoplay` and `testimonials` to avoid stale closures.
+  }, [autoplay, testimonials]);
 
   const randomRotateY = () => {
     return Math.floor(Math.random() * 21) - 10;
@@ -56,7 +56,7 @@ export const AnimatedTestimonials = ({
   }
 
   return (
-    <div className=" mx-auto antialiased bg-white font-sans px-4 md:px-8 lg:px-12 py-20">
+    <div className="relative z-10 mx-auto antialiased bg-white font-sans px-4 md:px-8 lg:px-12 py-20">
       <div className="relative grid grid-cols-1 md:grid-cols-2 gap-20">
         <div>
           <div className="relative h-80 w-full">
@@ -113,7 +113,7 @@ export const AnimatedTestimonials = ({
           >
             <h3 className="text-2xl font-bold text-black">{testimonials[active].name}</h3>
             <p className="text-sm text-black semibold">{testimonials[active].designation}</p>
-            <motion.p className="text-lg text-black mt-8 ">
+            <motion.p className="text-lg text-black mt-8">
               {testimonials[active].quote.split(" ").map((word, index) => (
                 <motion.span
                   key={index}
