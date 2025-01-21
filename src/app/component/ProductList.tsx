@@ -52,9 +52,9 @@ const ProductList: React.FC = () => {
     }
   };
 
-  const openModal = (pet: any) => {
-    setSelectedPet(pet); // Set selected pet details
-    setShowModal(true); // Show modal
+  const openModal = (pet: Pet) => {
+    setSelectedPet(pet);
+    setShowModal(true);
   };
 
   const closeModal = () => {
