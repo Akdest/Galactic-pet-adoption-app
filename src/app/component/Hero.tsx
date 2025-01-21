@@ -138,26 +138,56 @@ const Carousel = ({ images }: { images: string[] }) => {
     </div>
   );
 };
+const words = [
+  "Best Friend",
+  "Furry Buddy",
+  "Companion",
+  "Alien Pet",
+  "Loyal Friend",
+  "Adventurer"
+];
 
 // Header Component
-const Header = () => (
-  <div className="max-w-7xl relative mx-auto py-20 mt-40 md:mt-40 lg:mt-40 px-4 w-full text-center">
-    <h1 className="text-2xl md:text-7xl font-bold text-white relative z-10">
-      Your New Best Friend <br /> is Waiting!
-    </h1>
-    <p className="text-base md:text-xl mt-8 text-white relative z-10">
-      Adopt Love, Adopt Joy, Adopt a Pet Today!
-    </p>
-    <div className="flex justify-center mt-12 relative z-10">
-      <button
-        onClick={() => (window.location.href = "/pages/AdoptionList")}
-        className="bg-gradient-to-r from-pink-500 to-purple-600 text-white font-semibold py-2 px-6 rounded-full shadow-lg hover:shadow-pink-700 hover:scale-105 transition-all duration-300"
-      >
-        Adopt Now
-      </button>
+const Header = () => {
+  const [index, setIndex] = useState(0);
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setIndex((prevIndex) => (prevIndex + 1) % words.length);
+    }, 3000); // Changes every 3 seconds
+    return () => clearInterval(interval);
+  }, []);
+
+  return (
+    <div className="max-w-7xl relative mx-auto py-20 mt-40 md:mt-40 lg:mt-40 px-4 w-full text-center">
+      <h1 className="text-2xl md:text-6xl font-bold text-white relative z-10">
+        Your New{" "}
+        <motion.span
+          key={index}
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          exit={{ opacity: 0, y: -20 }}
+          transition={{ duration: 0.6 }}
+          className="text-transparent bg-gradient-to-r from-pink-500 to-purple-600 bg-clip-text"
+        >
+          {words[index]}
+        </motion.span>{" "}
+        is Waiting!
+      </h1>
+      <p className="text-md  md:text-xl mt-8 text-white relative z-10">
+        Adopt Love, Adopt Joy, Adopt a Pet Today!
+      </p>
+      <div className="flex justify-center mt-12 relative z-10">
+        <button
+          onClick={() => (window.location.href = "/pages/AdoptionList")}
+          className="bg-gradient-to-r from-pink-500 to-purple-600 text-white font-semibold py-2 px-6 rounded-full shadow-lg hover:shadow-pink-700 hover:scale-105 transition-all duration-300"
+        >
+          Adopt Now
+        </button>
+      </div>
     </div>
-  </div>
-);
+  );
+};
 
 // Product Card Component
 const ProductCard = ({
@@ -185,11 +215,6 @@ const ProductCard = ({
     <h2 className="absolute bottom-16 left-4 opacity-0 group-hover/product:opacity-100 text-white">
       {product.title}
     </h2>
-    {/* <button
-      onClick={() => (window.location.href = product.link)}
-      className="absolute bottom-4 left-4 bg-gradient-to-r from-pink-500 to-purple-600 text-white font-semibold py-2 px-6 rounded-full shadow-lg hover:shadow-pink-700 hover:scale-105 transition-all duration-300"
-    >
-      Adopt Now
-    </button> */}
+    
   </motion.div>
 );
