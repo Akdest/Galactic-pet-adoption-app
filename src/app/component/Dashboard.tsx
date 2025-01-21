@@ -1,7 +1,7 @@
 "use client";
 import { useState } from "react";
 import { motion } from "framer-motion";
-import { IconUser, IconSettings, IconChartBar, IconBell, IconCreditCard, IconLogout, IconMenu, IconX } from "@tabler/icons-react";
+import {  IconChartBar, IconBell, IconMenu, IconX } from "@tabler/icons-react";
 
 const Dashboard = () => {
   const [activeTab, setActiveTab] = useState("overview");
