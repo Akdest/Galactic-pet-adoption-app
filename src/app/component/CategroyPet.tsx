@@ -15,13 +15,13 @@ const petCategories = [
   {
     title: "Cuddly Cats",
     slogan: "Soft paws, warm hearts.",
-    image: "/one.jpg",
+    image: "/categcat.jpg",
     link: "/pages/AdoptiopnList",
   },
   {
     title: "Playful Rabbits",
     slogan: "Hop into happiness!",
-    image: "/one.jpg",
+    image: "/categrabbit.jpg",
     link: "/pages/AdoptionList",
   },
 ];
