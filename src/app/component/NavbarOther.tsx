@@ -6,6 +6,7 @@ import Link from "next/link";
 import { Disclosure, Transition } from "@headlessui/react";
 import { motion } from "framer-motion";
 import IMAGE_DETAILS from "./ImageDetails"; // Import the image details
+import { FaHome } from "react-icons/fa";
 
 
 const NAVLINKS = [
@@ -185,16 +186,21 @@ export default function NavbarOther() {
 }
 
 export function LogoOther() {
+  const [isScrolled, setIsScrolled] = useState(false);
+  useEffect(() => {
+    const handleScroll = () => {
+      setIsScrolled(window.scrollY > 80);
+    };
+
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
+
   return (
     <div className="flex items-center space-x-2 text-white">
       <Link href="/">
-      <Image
-  src="/logo.png"
-  alt="Galactic Pet Adoption Agency Logo"
-  width={60} // Adjust width as needed (equivalent to w-15)
-  height={48} // Adjust height as needed (equivalent to h-12)
-  className="w-15 h-12"
-/>
+
+<FaHome className={`h-6 w-8 transition-all duration-300 ${isScrolled ? 'text-black' : 'text-black'}`} />
       </Link>
     </div>
   );

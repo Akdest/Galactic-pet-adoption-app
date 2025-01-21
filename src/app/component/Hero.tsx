@@ -79,7 +79,7 @@ export const HeroParallax = ({
       }}
     >
       {/* Full-Screen Black Overlay */}
-      <div className={`absolute inset-0 z-[1] pointer-events-none ${isBelowViewport ? "opacity-0" : "opacity-60"}`}></div>
+      <div className={`absolute inset-0 z-[1] bg-black pointer-events-none ${isBelowViewport ? "opacity-0" : "opacity-30"}`}></div>
 
       {/* Carousel Section */}
       <Carousel images={carouselImages} />
@@ -168,7 +168,7 @@ const Header = () => {
           animate={{ opacity: 1, y: 0 }}
           exit={{ opacity: 0, y: -20 }}
           transition={{ duration: 0.6 }}
-          className="text-transparent bg-gradient-to-r from-pink-500 to-purple-600 bg-clip-text"
+          className="text-transparent bg-white bg-clip-text"
         >
           {words[index]}
         </motion.span>{" "}

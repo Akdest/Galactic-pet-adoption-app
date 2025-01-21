@@ -140,8 +140,8 @@ const ProductList: React.FC = () => {
           <motion.div
             key={pet.id}
             className="bg-white text-black p-4 rounded-lg shadow-lg hover:shadow-xl transition-shadow duration-300 ease-in-out transform hover:scale-105"
-            whileHover={{ scale: 1.05 }}
-            whileTap={{ scale: 0.95 }}
+            // whileHover={{ scale: 1.05 }}
+            // whileTap={{ scale: 0.95 }}
           >
             {/* Pet Image */}
             <Image

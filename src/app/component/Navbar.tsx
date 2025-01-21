@@ -77,16 +77,16 @@ export default function Navbar() {
               <div className="flex items-center space-x-4">
                 {/* Profile Button */}
                 <Link href="/pages/Login">
-                  <User className="text-black h-6 w-6 cursor-pointer" />
+                  <User className={`cursor-pointer transition-all duration-300 ${isScrolled ? 'text-black' : 'text-white'}`} />
                 </Link>
 
                 {/* Cart Button */}
                 <Link href="/pages/Cart">
-                  <ShoppingCart className="text-black h-6 w-6 cursor-pointer" />
+                  <ShoppingCart className={`cursor-pointer transition-all duration-300 ${isScrolled ? 'text-black' : 'text-white'}`} />
                 </Link>
 
                 {/* Mobile Menu Button */}
-                <Disclosure.Button className="text-black focus:outline-none z-50">
+                <Disclosure.Button className={`${isScrolled ? 'text-black' : 'text-white'} focus:outline-none z-50`}>
                   {open ? (
                     <X className="h-8 w-8 text-white cursor-pointer" />
                   ) : (
@@ -198,13 +198,6 @@ export function Logo() {
   return (
     <div className="flex items-center space-x-2 text-white">
       <Link href="/">
-      {/* <Image
-  src="/logo.png"
-  alt="Galactic Pet Adoption Agency Logo"
-  width={60} // Adjust width as needed (equivalent to w-15)
-  height={48} // Adjust height as needed (equivalent to h-12)
-  className="w-15 h-12"
-/> */}
 
 <FaHome className={`h-6 w-8 transition-all duration-300 ${isScrolled ? 'text-black' : 'text-white'}`} />
       </Link>
