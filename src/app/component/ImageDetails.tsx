@@ -6,63 +6,63 @@ export const IMAGE_DETAILS = [
       alt: "Image 1",
     },
     {
-      src: "/one.jpg",
+      src: "/two.jpg",
       alt: "Image 2",
     },
     {
-      src: "/one.jpg",
+      src: "/three.jpg",
       alt: "Image 3",
     },
     {
-      src: "/one.jpg",
+      src: "/four.jpg",
       alt: "Image 4",
     },
     {
-      src: "/one.jpg",
+      src: "/five.jpg",
       alt: "Image 5",
     },
     {
-      src: "/one.jpg",
+      src: "/six.jpg",
       alt: "Image 6",
     },
     {
-      src: "/one.jpg",
+      src: "/seven.jpg",
       alt: "Image 7",
     },
     {
-      src: "/one.jpg",
+      src: "/eight.jpg",
       alt: "Image 8",
     },
     {
-      src: "/one.jpg",
+      src: "/nine.jpg",
       alt: "Image 9",
     },
     {
-      src: "/one.jpg",
+      src: "/ten.jpg",
       alt: "Image 10",
     },
     {
-      src: "/one.jpg",
+      src: "/eleven.jpg",
       alt: "Image 11",
     },
     {
-      src: "/one.jpg",
+      src: "/twelwe.jpg",
       alt: "Image 12",
     },
     {
-      src: "/one.jpg",
+      src: "/thirteen.jpg",
       alt: "Image 13",
     },
     {
-      src: "/one.jpg",
+      src: "/fourteen.jpg",
       alt: "Image 14",
     },
     {
-      src: "/one.jpg",
+      src: "/fifteen.jpg",
       alt: "Image 15",
     },
     {
-      src: "/one.jpg",
+      src: "/sixteen.jpg",
       alt: "Image 16",
     },
    
