@@ -5,10 +5,28 @@ import { alienPets } from "../data/alienPets"; // Adjust the import path
 import { FaShoppingCart, FaRocket, FaSearch, FaRupeeSign, FaArrowRight } from "react-icons/fa";
 import { motion } from "framer-motion";
 
+interface Pet {
+  id: number;
+  name: string;
+  image: string;
+  planet: string;
+  age: number;
+  price: number;
+  features: string[];
+  rating: number;
+  description: string;
+  behavior: string;
+  preferredEnvironment: string;
+  trainingDifficulty: string;
+  temperament: string;
+  funFact: string;
+  additionalImages: string[];
+}
+
 const ProductList: React.FC = () => {
   const [cart, setCart] = useState<number[]>([]);
   const [showModal, setShowModal] = useState<boolean>(false); // To control modal visibility
-  const [selectedPet, setSelectedPet] = useState<any>(null); // To store the selected pet for the modal
+ const [selectedPet, setSelectedPet] = useState<Pet | null>(null); // To store the selected pet for the modal
   const [searchQuery, setSearchQuery] = useState<string>(""); // State for search input
   const [minPrice, setMinPrice] = useState<number>(0); // State for minimum price filter
   const [maxPrice, setMaxPrice] = useState<number>(1000); // State for maximum price filter
