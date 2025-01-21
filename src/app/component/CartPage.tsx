@@ -2,6 +2,7 @@
 import React, { useState, useEffect } from "react";
 import { alienPets } from "../data/alienPets"; // Adjust the import path as necessary
 import { ToastContainer, toast } from "react-toastify";
+import Image from "next/image"; // Import Image component from Next.js
 import "react-toastify/dist/ReactToastify.css"; // Import Toastify styles
 
 const CartPage: React.FC = () => {
@@ -117,11 +118,13 @@ const CartPage: React.FC = () => {
                 key={pet.id}
                 className="bg-white p-4 rounded-lg shadow-lg hover:shadow-xl transition-shadow transform hover:scale-105 duration-300"
               >
-                <img
-                  src={pet.image}
-                  alt={pet.name}
-                  className="w-full h-48 object-cover rounded-md mb-4 transition-transform transform hover:scale-110 duration-300"
-                />
+               <Image
+  src={pet.image}
+  alt={pet.name}
+  width={300} // Adjust as needed
+  height={192} // Adjust as needed
+  className="w-full h-48 object-cover rounded-md mb-4 transition-transform transform hover:scale-110 duration-300"
+/>
                 <h3 className="text-xl font-semibold text-gray-800">{pet.name}</h3>
                 <p className="text-gray-600">Planet: {pet.planet}</p>
                 <p className="text-gray-600">Price: ${pet.price}</p>

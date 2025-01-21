@@ -1,6 +1,7 @@
 "use client";
 import React, { useState, useEffect } from "react";
 import { Toaster, toast } from "react-hot-toast";
+import Image from "next/image";
 import { alienPetsnew } from "../data/newarrivals";
 import { FaShoppingCart, FaRocket, FaRupeeSign, FaArrowRight } from "react-icons/fa";
 import { motion } from "framer-motion";
@@ -63,21 +64,23 @@ const NewestArrivals: React.FC = () => {
   return (
     <div className="container mx-auto px-4 py-8 bg-white">
       <Toaster position="top-right" reverseOrder={false} />
-      <motion.h2 className="text-center text-4xl font-extrabold text-black mb-6">
-        Newly Landed
-      </motion.h2>
-      <motion.p className="text-center text-gray-700 mb-12">
-        Discover our newest and most exciting arrivals!
-      </motion.p>
+      <motion.h2 className="text-center text-6xl font-semibold text-black mb-6">
+  Newly Landed
+</motion.h2>
+<motion.p className="text-center lg:text-lg md:text-md sm:text-sm text-gray-700 mb-12">
+  Meet the latest intergalactic companions ready for adoption! Explore unique alien pets from across the cosmos.
+</motion.p>
 
       <div className="grid bg-white grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8 p-4">
         {alienPetsnew.map((pet: Pet) => (
           <motion.div key={pet.id} className="bg-white text-black p-4 rounded-lg shadow-lg">
-            <img
-                          src={pet.image}
-                          alt={pet.name}
-                          className="w-full h-48 object-cover rounded-md mb-4"
-                        />
+            <Image
+  src={pet.image}
+  alt={pet.name}
+  width={500} // Adjust width as needed
+  height={192} // Adjust height as needed (h-48 ≈ 192px)
+  className="w-full h-48 object-cover rounded-md mb-4"
+/>
             
                         {/* Pet Details */}
                         <h3 className="text-xl font-semibold">{pet.name}</h3>
@@ -130,23 +133,27 @@ const NewestArrivals: React.FC = () => {
            <div className="flex flex-col lg:flex-row w-full">
              {/* Left side - Image */}
              <div className="w-full lg:w-1/2 mb-6 lg:mb-0">
-               <img
-                 src={selectedPet.image}
-                 alt={selectedPet.name}
-                 className="lg:w-auto w-full h-auto object-cover rounded-md"
-               />
+             <Image
+  src={selectedPet.image}
+  alt={selectedPet.name}
+  width={500} // Adjust width as needed
+  height={300} // Adjust height as needed
+  className="lg:w-auto w-full h-auto object-cover rounded-md"
+/>
      
                {/* Additional Images */}
      
                 <p className="text-gray-500 mt-6">🛸 Additional Images:</p>
                  <div className="flex flex-wrap gap-4">
                    {selectedPet.additionalImages.map((image: string, index: number) => (
-                     <img
-                       key={index}
-                       src={image}
-                       alt={`Additional image ${index + 1}`}
-                       className="w-1/4 sm:w-1/5 h-auto rounded-md"
-                     />
+                     <Image
+                     key={index}
+                     src={image}
+                     alt={`Additional image ${index + 1}`}
+                     width={200} // Adjust width as needed
+                     height={200} // Adjust height as needed
+                     className="w-1/4 sm:w-1/5 h-auto rounded-md"
+                   />
                    ))}
                  </div>
              </div>

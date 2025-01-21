@@ -1,5 +1,6 @@
 "use client";
 import React from 'react';
+import Image from 'next/image';
 
 interface BlogCardProps {
   title: string;
@@ -26,7 +27,13 @@ const BlogCard: React.FC<BlogCardProps> = ({
 }) => {
   return (
     <div className="bg-white shadow-lg rounded-lg overflow-hidden  hover:shadow-2xl transform hover:scale-105 transition duration-300 relative">
-      <img src={thumbnail} alt={title} className="w-full h-56 object-cover sm:h-64 md:h-72" />
+      <Image
+  src={thumbnail}
+  alt={title}
+  width={500} // Adjust as needed
+  height={256} // Adjust as needed (height for w-full and h-56 equivalent)
+  className="w-full h-56 object-cover sm:h-64 md:h-72"
+/>
 
       {/* Category Badge */}
       <span className="absolute top-3 left-3 bg-pink-600 text-white text-xs font-semibold uppercase px-3 py-1 rounded-full">

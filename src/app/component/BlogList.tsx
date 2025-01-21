@@ -7,8 +7,8 @@ const BlogList = () => {
     {
       title: "Adopting a Galactic Pet: A Complete Guide",
       description: "Explore the wonders of adopting and raising alien pets.",
-      thumbnail: "/images/galactic-pet.jpg",
-      link: "/blog/galactic-pet-guide",
+      thumbnail: "/one.jpg",
+      link: "/",
       category: "Pet Adoption",
       date: "2025-01-14",
       wordCount: 500,
@@ -17,8 +17,8 @@ const BlogList = () => {
     {
       title: "Caring for Space Creatures",
       description: "Tips and tricks for raising space pets.",
-      thumbnail: "/images/space-creatures.jpg",
-      link: "/blog/space-pet-care",
+      thumbnail: "/one.jpg",
+      link: "/",
       category: "Pet Care",
       date: "2025-01-12",
       wordCount: 400,

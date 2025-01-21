@@ -1,5 +1,6 @@
 "use client";
 import { useState, useEffect } from "react";
+import Image from "next/image";
 import { Menu, X, ChevronRight, User, ShoppingCart } from "lucide-react"; 
 import Link from "next/link";
 import { Disclosure, Transition } from "@headlessui/react";
@@ -158,14 +159,19 @@ export default function NavbarOther() {
                     onMouseEnter={shuffleImages} // Shuffle images when hovering over menu
                   >
                     {shuffledImages.map((image, idx) => (
-                      <motion.img
-                        key={`${image.src}-${idx}`}
+                      <motion.div
+                      key={`${image.src}-${idx}`}
+                      whileHover={{ scale: 1.05 }}
+                      transition={{ duration: 0.3 }}
+                    >
+                      <Image
                         src={image.src}
                         alt={image.alt}
+                        width={500} // Adjust width as needed
+                        height={128} // Adjust height as needed (corresponding to h-32)
                         className="w-full h-32 object-cover rounded-lg shadow-md"
-                        whileHover={{ scale: 1.05 }}
-                        transition={{ duration: 0.3 }}
                       />
+                    </motion.div>
                     ))}
                   </motion.div>
                 </div>
@@ -181,8 +187,14 @@ export default function NavbarOther() {
 export function LogoOther() {
   return (
     <div className="flex items-center space-x-2 text-white">
-      <Link href="/Home">
-        <img src="/logo.png" alt="Galactic Pet Adoption Agency Logo" className="w-15 h-12" />
+      <Link href="/">
+      <Image
+  src="/logo.png"
+  alt="Galactic Pet Adoption Agency Logo"
+  width={60} // Adjust width as needed (equivalent to w-15)
+  height={48} // Adjust height as needed (equivalent to h-12)
+  className="w-15 h-12"
+/>
       </Link>
     </div>
   );

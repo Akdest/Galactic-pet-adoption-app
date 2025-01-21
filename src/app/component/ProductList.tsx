@@ -4,6 +4,7 @@ import { Toaster, toast } from "react-hot-toast";
 import { alienPets } from "../data/alienPets"; // Adjust the import path
 import { FaShoppingCart, FaRocket, FaSearch, FaRupeeSign, FaArrowRight } from "react-icons/fa";
 import { motion } from "framer-motion";
+import Image from "next/image"; // Import Image component from Next.js
 
 interface Pet {
   id: number;
@@ -143,11 +144,13 @@ const ProductList: React.FC = () => {
             whileTap={{ scale: 0.95 }}
           >
             {/* Pet Image */}
-            <img
-              src={pet.image}
-              alt={pet.name}
-              className="w-full h-48 object-cover rounded-md mb-4"
-            />
+            <Image
+  src={pet.image} // Assuming pet.image is a URL or path to the image
+  alt={pet.name}
+  width={500} // Adjust width as needed
+  height={192} // Adjust height as needed (or calculate based on aspect ratio)
+  className="w-full h-48 object-cover rounded-md mb-4"
+/>
 
             {/* Pet Details */}
             <h3 className="text-xl font-semibold">{pet.name}</h3>
@@ -202,23 +205,27 @@ const ProductList: React.FC = () => {
       <div className="flex flex-col lg:flex-row w-full">
         {/* Left side - Image */}
         <div className="w-full lg:w-1/2 mb-6 lg:mb-0">
-          <img
-            src={selectedPet.image}
-            alt={selectedPet.name}
-            className="lg:w-auto w-full h-auto object-cover rounded-md"
-          />
+        <Image
+  src={selectedPet.image} // Ensure selectedPet.image is a URL or path to the image
+  alt={selectedPet.name}
+  width={500} // Adjust width as needed
+  height={500} // Adjust height as needed, or calculate based on aspect ratio
+  className="lg:w-auto w-full h-auto object-cover rounded-md"
+/>
 
           {/* Additional Images */}
 
            <p className="text-gray-500 mt-6">🛸 Additional Images:</p>
             <div className="flex flex-wrap gap-4">
               {selectedPet.additionalImages.map((image: string, index: number) => (
-                <img
-                  key={index}
-                  src={image}
-                  alt={`Additional image ${index + 1}`}
-                  className="w-1/4 sm:w-1/5 h-auto rounded-md"
-                />
+                <Image
+                key={index}
+                src={image} // Ensure image is a valid URL or path
+                alt={`Additional image ${index + 1}`}
+                width={200} // Adjust width as needed, based on your design
+                height={200} // Adjust height to maintain aspect ratio or as needed
+                className="w-1/4 sm:w-1/5 h-auto rounded-md"
+              />
               ))}
             </div>
         </div>
