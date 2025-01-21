@@ -156,7 +156,7 @@ const CartPage: React.FC = () => {
           </div>
           
         )}
-<span className="text-gray-600 text-sm">Use code "DISCOUNT10" for 10% off your order!</span>
+<span className="text-gray-600 text-sm">Use code &quot;DISCOUNT10&quot; for 10% off your order!</span>
         {/* Checkout Button */}
         {cartItems.length > 0 && (
           <div className="flex justify-between items-center mt-8">
