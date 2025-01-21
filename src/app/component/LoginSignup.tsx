@@ -46,13 +46,13 @@ const LoginSignup = () => {
         </div>
 
         {/* Tabs (Login and Sign Up) */}
-        <div className="flex   space-y-6  flex-wrap justify-center">
+        <div className="flex flex-col md:flex-row gap-4 w-full justify-center">
           <button
             onClick={() => {
               setActiveTab("login");
               setAuthError("");
             }}
-            className={`py-2 px-8 rounded-full text-sm font-bold transition-all w-full  ${
+            className={`py-2 px-8 rounded-full text-sm font-bold transition-all w-full md:w-auto ${
               activeTab === "login"
                 ? "bg-gradient-to-r from-purple-500 to-blue-500 text-white shadow-md"
                 : "bg-gray-600 text-gray-300"
@@ -65,7 +65,7 @@ const LoginSignup = () => {
               setActiveTab("signup");
               setAuthError("");
             }}
-            className={`py-2 px-8 rounded-full text-sm font-bold transition-all w-full  ${
+            className={`py-2 px-8 rounded-full text-sm font-bold transition-all w-full md:w-auto ${
               activeTab === "signup"
                 ? "bg-gradient-to-r from-green-500 to-teal-500 text-white shadow-md"
                 : "bg-gray-600 text-gray-300"

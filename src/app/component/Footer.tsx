@@ -20,7 +20,7 @@ const Footer = () => {
         
         {/* About Section */}
         <div>
-          <h3 className="text-lg font-bold mb-4">About Galactic Pet Adoption</h3>
+          <h3 className="text-lg font-bold mb-4"> Galactic Pet Adoption</h3>
           <p className="text-sm text-gray-600">
             Welcome to the Galactic Pet Adoption Agency, your destination for interstellar companionship.
             Adopt unique alien pets from distant galaxies and embark on unforgettable adventures.
