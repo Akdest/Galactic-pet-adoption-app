@@ -27,70 +27,72 @@ const LoginSignup = () => {
   const handleSignup = (email: string, password: string) => {
     if (email && password) {
       localStorage.setItem("auth", "true");
-      router.push("/dashboard");
+      router.push("/Dashboard");
     } else {
       setAuthError("Please fill in all fields to sign up.");
     }
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-gray-900 to-gray-800 flex items-center justify-center overflow-hidden relative">
-      <div className="absolute top-0 left-0 w-full h-full bg-cover bg-center opacity-40" style={{ backgroundImage: "url('/assets/background.jpg')" }}></div>
-
-      <div className="z-10 flex justify-center w-full max-w-4xl p-8 bg-gradient-to-br from-gray-800 to-gray-700 shadow-2xl rounded-2xl border border-gray-600">
-        <div className="flex-1 flex flex-col justify-center items-center md:items-start">
-          {/* Slogan Text */}
-          <div className="text-white text-3xl font-extrabold bg-gradient-to-r from-pink-500 to-purple-500 bg-clip-text text-transparent">
+    <div className="min-h-screen bg-gradient-to-br from-gray-900 to-gray-800 flex items-center justify-center overflow-hidden relative mt-16">
+      <div className="absolute top-0 left-0 w-full h-full bg-cover bg-center opacity-40" style={{ backgroundImage: "url('/one.jpg')" }}>
+      
+      {/* Slogan and Description (below the form) */}
+      {/* <div className="text-center mt-8">
+          <div className=" text-3xl text-white font-extrabold ">
             Galactic Pet Adoption
           </div>
-          <p className="text-gray-300 text-lg mt-2 text-center md:text-left">
+          <p className=" text-lg text-white mt-2">
+            Find your perfect intergalactic companion! <span className="text-teal-800">Join the galaxy now!</span>
+          </p>
+        </div> */}
+      </div>
+  
+      <div className="z-10 flex flex-col justify-center items-center w-1/2 max-w-4xl p-8 bg-gradient-to-br from-gray-800 to-gray-700 shadow-2xl rounded-2xl border border-gray-600 space-y-8">
+      <div className=" text-3xl font-extrabold text-white text-center bg-gradient-to-r from-pink-500 to-purple-500 bg-clip-text text-transparent">
+         <span className="">Welcome Back!!</span>  
+           <p className=" lg:text-lg text-md text-white mt-2">
             Find your perfect intergalactic companion! <span className="text-teal-500">Join the galaxy now!</span>
           </p>
-
-          {/* Tabs (Login and Sign Up) */}
-          <div className="mt-10 flex space-x-6">
-            <button
-              onClick={() => {
-                setActiveTab("login");
-                setAuthError("");
-              }}
-              className={`py-2 px-8 rounded-full text-sm font-bold transition-all w-full md:w-auto ${
-                activeTab === "login"
-                  ? "bg-gradient-to-r from-purple-500 to-blue-500 text-white shadow-md"
-                  : "bg-gray-600 text-gray-300"
-              }`}
-            >
-              Log In
-            </button>
-            <button
-              onClick={() => {
-                setActiveTab("signup");
-                setAuthError("");
-              }}
-              className={`py-2 px-8 rounded-full text-sm font-bold transition-all w-full md:w-auto ${
-                activeTab === "signup"
-                  ? "bg-gradient-to-r from-green-500 to-teal-500 text-white shadow-md"
-                  : "bg-gray-600 text-gray-300"
-              }`}
-            >
-              Sign Up
-            </button>
           </div>
-
-          {/* Error message */}
-          {authError && (
-            <div className="text-red-500 font-medium text-center mt-4">{authError}</div>
-          )}
+        {/* Tabs (Login and Sign Up) */}
+        <div className="flex space-x-6">
+          <button
+            onClick={() => {
+              setActiveTab("login");
+              setAuthError("");
+            }}
+            className={`py-2 px-8 rounded-full text-sm font-bold transition-all w-full md:w-auto ${
+              activeTab === "login"
+                ? "bg-gradient-to-r from-purple-500 to-blue-500 text-white shadow-md"
+                : "bg-gray-600 text-gray-300"
+            }`}
+          >
+            Log In
+          </button>
+          <button
+            onClick={() => {
+              setActiveTab("signup");
+              setAuthError("");
+            }}
+            className={`py-2 px-8 rounded-full text-sm font-bold transition-all w-full md:w-auto ${
+              activeTab === "signup"
+                ? "bg-gradient-to-r from-green-500 to-teal-500 text-white shadow-md"
+                : "bg-gray-600 text-gray-300"
+            }`}
+          >
+            Sign Up
+          </button>
         </div>
-
+  
         {/* Form (Login/Signup) */}
         <motion.div
           key={activeTab}
-          initial={{ opacity: 0, x: activeTab === "login" ? 50 : -50 }}
-          animate={{ opacity: 1, x: 0 }}
-          exit={{ opacity: 0, x: activeTab === "login" ? -50 : 50 }}
+          initial={{ opacity: 0, y: -50 }}
+          animate={{ opacity: 1, y: 0 }}
+          exit={{ opacity: 0, y: 50 }}
           transition={{ duration: 0.6 }}
-          className="flex-1 mt-8 md:mt-0"
+          className="w-full"
         >
           {activeTab === "login" ? (
             <LoginForm onSubmit={handleLogin} />
@@ -98,9 +100,13 @@ const LoginSignup = () => {
             <SignupForm onSubmit={handleSignup} />
           )}
         </motion.div>
+  
+        
       </div>
     </div>
   );
+  
+  
 };
 
 const LoginForm = ({ onSubmit }: { onSubmit: (email: string, password: string) => void }) => {

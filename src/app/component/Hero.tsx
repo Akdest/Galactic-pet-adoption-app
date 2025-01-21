@@ -49,7 +49,7 @@ export const HeroParallax = ({
       const x = (clientX / innerWidth) * 100;
       const y = (clientY / innerHeight) * 100;
       setGradient(
-        `radial-gradient(circle at ${x}% ${y}%, rgba(216, 255, 229, 1), ${
+        `radial-gradient(circle at ${x}% ${y}%,rgba(255, 239, 255, 1), ${
           isBelowViewport ? "rgba(255,255,255,1)" : "rgba(255,255,255,1)"
         })`
       );
@@ -150,7 +150,7 @@ const Header = () => (
     </p>
     <div className="flex justify-center mt-12 relative z-10">
       <button
-        onClick={() => (window.location.href = "/shop")}
+        onClick={() => (window.location.href = "/pages/AdoptionList")}
         className="bg-gradient-to-r from-pink-500 to-purple-600 text-white font-semibold py-2 px-6 rounded-full shadow-lg hover:shadow-pink-700 hover:scale-105 transition-all duration-300"
       >
         Adopt Now
@@ -185,11 +185,11 @@ const ProductCard = ({
     <h2 className="absolute bottom-16 left-4 opacity-0 group-hover/product:opacity-100 text-white">
       {product.title}
     </h2>
-    <button
+    {/* <button
       onClick={() => (window.location.href = product.link)}
       className="absolute bottom-4 left-4 bg-gradient-to-r from-pink-500 to-purple-600 text-white font-semibold py-2 px-6 rounded-full shadow-lg hover:shadow-pink-700 hover:scale-105 transition-all duration-300"
     >
       Adopt Now
-    </button>
+    </button> */}
   </motion.div>
 );

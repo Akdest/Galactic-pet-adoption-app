@@ -10,19 +10,19 @@ const petCategories = [
     title: "Adventurous Dogs",
     slogan: "Find your brave companion!",
     image: "/one.jpg",
-    link: "/adopt/dogs",
+    link: "/pages/AdoptionList",
   },
   {
     title: "Cuddly Cats",
     slogan: "Soft paws, warm hearts.",
     image: "/one.jpg",
-    link: "/adopt/cats",
+    link: "/pages/AdoptiopnList",
   },
   {
     title: "Playful Rabbits",
     slogan: "Hop into happiness!",
     image: "/one.jpg",
-    link: "/adopt/rabbits",
+    link: "/pages/AdoptionList",
   },
 ];
 
