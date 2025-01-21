@@ -1,13 +1,13 @@
 import Footer from '@/app/component/Footer'
-import Navbar from '@/app/component/Navbar'
-// import ProfileDashboard from '@/app/component/ProfileDashboard'
+import ProfileDashboard from '@/app/component/Dashboard'
 import React from 'react'
+import NavbarOther from '@/app/component/NavbarOther'
 
 const page = () => {
   return (
     <div>
-      <Navbar/>
-      {/* <ProfileDashboard/> */}
+      <NavbarOther/>
+      <ProfileDashboard/>
       <Footer/>
     </div>
   )
