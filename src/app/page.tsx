@@ -11,56 +11,67 @@ import Footer from './component/Footer';
 const Page = () => {
   const products = [
     {
-      title: "Product 1",
+      title: "Cosmo Paws 🪐",
       link: "#",
-      thumbnail: "/one.jpg", // Updated to a sample image path
+      thumbnail: "/sixteen.jpg",
+      carouselImage: "/htwo.jpg",
     },
     {
-      title: "Product 2",
+      title: "Nebula Whiskers 🌌",
       link: "#",
-      thumbnail: "/one.jpg", // Updated to a sample image path
+      thumbnail: "/fifteen.jpg",
+      carouselImage: "/hthree.jpg",
     },
     {
-      title: "Product 3",
+      title: "Lunar Tail 🌙",
       link: "#",
-      thumbnail: "/one.jpg", // Updated to a sample image path
+      thumbnail: "/fourteen.jpg",
+      carouselImage: "/hfour.jpg",
     },
     {
-      title: "Product 4",
+      title: "Astro Pup 🚀",
       link: "#",
-      thumbnail: "/one.jpg", // Updated to a sample image path
+      thumbnail: "/thirteen.jpg",
+      carouselImage: "/hfive.jpg",
     },
     {
-      title: "Product 5",
+      title: "Starlight Hopper ✨",
       link: "#",
-      thumbnail: "/one.jpg", // Updated to a sample image path
+      thumbnail: "/twelwe.jpg",
+      carouselImage: "/hsix.jpg",
     },
     {
-      title: "Product 6",
+      title: "Galactic Meow 🛸",
       link: "#",
-      thumbnail: "/one.jpg", // Updated to a sample image path
+      thumbnail: "/eleven.jpg",
+      carouselImage: "/hseven.jpg",
     },
     {
-      title: "Product 7",
+      title: "Quantum Fluff ⚛️",
       link: "#",
-      thumbnail: "/one.jpg", // Updated to a sample image path
+      thumbnail: "/ten.jpg",
+      carouselImage: "/height.jpg",
     },
     {
-      title: "Product 8",
+      title: "Eclipse Howler 🌒",
       link: "#",
-      thumbnail: "/one.jpg", // Updated to a sample image path
+      thumbnail: "/nine.jpg",
+      carouselImage: "/hnine.jpg",
     },
     {
-      title: "Product 9",
+      title: "Starborn Purr 🔮",
       link: "#",
-      thumbnail: "/one.jpg", // Updated to a sample image path
+      thumbnail: "/eight.jpg",
+      carouselImage: "/hten.jpg",
     },
     {
-      title: "Product 10",
+      title: "Meteor Sprinter ☄️",
       link: "#",
-      thumbnail: "/one.jpg", // Updated to a sample image path
+      thumbnail: "/seven.jpg",
+      carouselImage: "/heleven.jpg",
     },
   ];
+  
 
   const testimonials = [
     {
@@ -98,7 +109,7 @@ const Page = () => {
   return (
     <div>
       <Navbar />
-      <HeroParallax products={products} carouselImages={products.map(product => product.thumbnail)} />  
+      <HeroParallax products={products} carouselImages={products.map(product => product.carouselImage)} />  
       <CategoryPets />
       <NewestArrivals/>
       <HowWeWork />

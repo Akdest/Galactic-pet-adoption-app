@@ -9,7 +9,7 @@ const petCategories = [
   {
     title: "Adventurous Dogs",
     slogan: "Find your brave companion!",
-    image: "/one.jpg",
+    image: "/categdog.jpg",
     link: "/pages/AdoptionList",
   },
   {

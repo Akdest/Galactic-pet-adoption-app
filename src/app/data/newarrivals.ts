@@ -3,7 +3,7 @@ export const alienPetsnew = [
       id: 1,
       name: "Zog",
       planet: "Mars",
-      image: "/one.jpg",
+      image: "/fourteen.jpg",
       quantity: 5,
       features: ["friendly", "playful"],
       rating: 4.5,
@@ -22,7 +22,7 @@ export const alienPetsnew = [
       id: 2,
       name: "Xen",
       planet: "Venus",
-      image: "/images/xen.png",
+      image: "/two.jpg",
       quantity: 3,
       features: ["curious", "energetic"],
       rating: 4.7,
@@ -41,7 +41,7 @@ export const alienPetsnew = [
       id: 3,
       name: "Grek",
       planet: "Jupiter",
-      image: "/images/grek.png",
+      image: "/ten.jpg",
       quantity: 4,
       features: ["intelligent", "loyal"],
       rating: 4.8,
@@ -60,7 +60,7 @@ export const alienPetsnew = [
       id: 4,
       name: "Vera",
       planet: "Saturn",
-      image: "/images/vera.png",
+      image: "/four.jpg",
       quantity: 6,
       features: ["playful", "affectionate"],
       rating: 4.6,
@@ -75,6 +75,5 @@ export const alienPetsnew = [
       temperament: "Gentle and loving.",
       funFact: "Vera's favorite activity is stargazing with its owner.",
     },
-    
   ];
   
