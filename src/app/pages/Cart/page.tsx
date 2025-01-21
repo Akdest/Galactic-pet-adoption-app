@@ -1,13 +1,13 @@
+import CartPage from '@/app/component/CartPage'
 import Footer from '@/app/component/Footer'
 import NavbarOther from '@/app/component/NavbarOther'
-import ProductList from '@/app/component/ProductList'
 import React from 'react'
 
 const page = () => {
   return (
-    <div className='bg-white'>
+    <div>
       <NavbarOther/>
-          <ProductList/>
+      <CartPage/>
       <Footer/>
     </div>
   )

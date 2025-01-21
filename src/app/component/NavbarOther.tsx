@@ -6,6 +6,7 @@ import { Disclosure, Transition } from "@headlessui/react";
 import { motion } from "framer-motion";
 import IMAGE_DETAILS from "./ImageDetails"; // Import the image details
 
+
 const NAVLINKS = [
   { href: "/", text: "HOME" },
   { href: "#", text: "ABOUT US" },
@@ -33,7 +34,7 @@ const NAVLINKS = [
   { href: "#", text: "CONTACT US" },
 ];
 
-export default function Navbar() {
+export default function NavbarOther() {
   const [openSubMenu, setOpenSubMenu] = useState<number | null>(null);
   const [isScrolled, setIsScrolled] = useState(false);
 
@@ -59,14 +60,14 @@ export default function Navbar() {
   };
 
   return (
-    <Disclosure as="nav" className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${isScrolled ? 'bg-white' : 'bg-transparent'}`}>
+    <Disclosure as="nav" className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${isScrolled ? 'bg-white' : 'bg-white'}`}>
       {({ open }) => (
         <>
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="flex justify-between items-center h-16">
               {/* Logo */}
               <div className="flex-shrink-0">
-                <Logo />
+                <LogoOther />
               </div>
 
               <div className="flex-1"></div>
@@ -177,7 +178,7 @@ export default function Navbar() {
   );
 }
 
-export function Logo() {
+export function LogoOther() {
   return (
     <div className="flex items-center space-x-2 text-white">
       <Link href="/Home">
