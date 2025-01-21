@@ -55,8 +55,13 @@ const CartPage: React.FC = () => {
       progress: undefined,
       className: "toast-animation", // Custom class for toast animation
     });
-    // Add further checkout logic here, if needed
+  
+    // Redirect to Payment page after a short delay
+    setTimeout(() => {
+      window.location.href = "/pages/PaymentPage"; // Adjust the path as needed
+    }, 1500);
   };
+  
 
   // Apply discount logic
   const handleApplyDiscount = () => {

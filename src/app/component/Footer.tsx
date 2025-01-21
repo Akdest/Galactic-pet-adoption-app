@@ -37,18 +37,18 @@ const Footer = () => {
               </button>
             </li>
             <li>
-              <button onClick={() => navigateTo("/adoption")} className="hover:text-purple-500 transition">
-                Adoption Process
+              <button onClick={() => navigateTo("/pages/AdoptionList")} className="hover:text-purple-500 transition">
+                Adoption List
               </button>
             </li>
             <li>
-              <button onClick={() => navigateTo("/about")} className="hover:text-purple-500 transition">
-                About Us
+              <button onClick={() => navigateTo("/pages/Cart")} className="hover:text-purple-500 transition">
+                Cart
               </button>
             </li>
             <li>
               <button onClick={() => navigateTo("/contact")} className="hover:text-purple-500 transition">
-                Contact
+                Contact Us
               </button>
             </li>
           </ul>
