@@ -23,23 +23,21 @@ body {
 }
 
 
-/* Custom scrollbar */
 ::-webkit-scrollbar {
-  width: 12px; /* Width of the scrollbar */
-  height: 12px; /* Height for horizontal scrollbar */
+  width: 10px; /* Slightly narrower width for a modern look */
+  height: 10px; /* Height for horizontal scrollbar */
 }
 
 ::-webkit-scrollbar-track {
-  background: linear-gradient(135deg, #f1f1f1, #e0e0e0); /* Gradient background for the scrollbar track */
+  background: linear-gradient(135deg, rgba(255, 230, 245, 0.8), rgba(255, 200, 220, 0.8)); /* Soft pink gradient for the track */
   border-radius: 10px;
 }
 
 ::-webkit-scrollbar-thumb {
-  background: linear-gradient(135deg, #888, #555); /* Gradient color of the scrollbar thumb */
+  background: linear-gradient(135deg, #ff60a7, #ff2b77); /* Modern pink gradient for the thumb */
   border-radius: 10px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: linear-gradient(135deg, #555, #333); /* Darker gradient when hovering over the scrollbar thumb */
+  background: linear-gradient(135deg, #ff2b77, #d91e5e); /* Darker pink gradient when hovering */
 }
-

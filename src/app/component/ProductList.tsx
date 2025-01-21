@@ -1,10 +1,12 @@
 "use client";
 import React, { useState, useEffect } from "react";
-import { Toaster, toast } from "react-hot-toast";
+import { Toaster } from "react-hot-toast"; // Use this for the Toaster
 import { alienPets } from "../data/alienPets"; // Adjust the import path
 import { FaShoppingCart, FaRocket, FaSearch, FaRupeeSign, FaArrowRight } from "react-icons/fa";
 import { motion } from "framer-motion";
 import Image from "next/image"; // Import Image component from Next.js
+import "react-toastify/dist/ReactToastify.css"; // Import Toastify styles
+import { toast} from "react-toastify";
 
 interface Pet {
   id: number;
@@ -74,6 +76,25 @@ const ProductList: React.FC = () => {
     return isWithinPriceRange && matchesSearchQuery;
   });
 
+const handleCheckout = () => {
+    toast.success("Proceeding to checkout!", {
+      position: "top-center",
+      autoClose: 3000,
+      hideProgressBar: false,
+      closeOnClick: true,
+      pauseOnHover: true,
+      draggable: true,
+      progress: undefined,
+      className: "toast-animation", // Custom class for toast animation
+    });
+  
+    // Redirect to Payment page after a short delay
+    setTimeout(() => {
+      window.location.href = "/pages/PaymentPage"; // Adjust the path as needed
+    }, 1500);
+  };
+
+
   return (
     <div>
       <Toaster position="top-right" reverseOrder={false} />
@@ -140,8 +161,7 @@ const ProductList: React.FC = () => {
           <motion.div
             key={pet.id}
             className="bg-white text-black p-4 rounded-lg shadow-lg hover:shadow-xl transition-shadow duration-300 ease-in-out transform hover:scale-105"
-            // whileHover={{ scale: 1.05 }}
-            // whileTap={{ scale: 0.95 }}
+           
           >
             {/* Pet Image */}
             <Image
@@ -270,7 +290,7 @@ const ProductList: React.FC = () => {
             {/* Proceed to Checkout Button */}
             <motion.button
               whileTap={{ scale: 0.95 }}
-              onClick={() => toast.success("Proceeding to checkout...")} // Implement the actual checkout functionality here
+              onClick={handleCheckout} // Implement the actual checkout functionality here
               className="w-full py-2 px-6 rounded-lg text-white font-semibold flex items-center justify-center gap-2 bg-gradient-to-r from-yellow-400 via-yellow-500 to-yellow-600 hover:from-yellow-500 hover:to-yellow-700 transition-all duration-300"
             >
               <FaArrowRight />

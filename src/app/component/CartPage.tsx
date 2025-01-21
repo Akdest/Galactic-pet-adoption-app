@@ -1,7 +1,8 @@
 "use client";
 import React, { useState, useEffect } from "react";
 import { alienPets } from "../data/alienPets"; // Adjust the import path as necessary
-import { ToastContainer, toast } from "react-toastify";
+import { ToastContainer, toast } from "react-toastify"; // Only use this import
+
 import Image from "next/image"; // Import Image component from Next.js
 import "react-toastify/dist/ReactToastify.css"; // Import Toastify styles
 
