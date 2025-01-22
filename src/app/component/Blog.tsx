@@ -2,6 +2,7 @@
 import React, { useState } from "react";
 import Image from "next/image";
 import { IconHeart, IconBookmark, IconShare, IconBrandWhatsapp, IconBrandTwitter, IconBrandLinkedin, IconBrandFacebook } from "@tabler/icons-react";
+import Link from "next/link"; // Import Link
 
 interface BlogCardProps {
   title: string;
@@ -145,9 +146,11 @@ const BlogCard: React.FC<BlogCardProps> = ({
           </span>
         </div>
 
-        <a href={link} className="text-pink-600 mt-4 inline-block font-medium hover:underline">
-          Read Blog
-        </a>
+        {/* Updated Link Component */}
+        <Link href={`../pages/Blog/${link}`} className="text-pink-600 mt-4 inline-block font-medium hover:underline">
+  Read Blog
+</Link>
+
 
         {/* Related Topics Section */}
         <div className="mt-4">
