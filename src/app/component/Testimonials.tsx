@@ -6,12 +6,6 @@ import Image from "next/image";
 import { useEffect, useState } from "react";
 import { testimonials } from "../data/testimonials";
 
-type Testimonial = {
-  quote: string;
-  name: string;
-  designation: string;
-  src: string;
-};
 
 export const AnimatedTestimonials = ({ autoplay = false }: { autoplay?: boolean }) => {
   const [active, setActive] = useState(0);
