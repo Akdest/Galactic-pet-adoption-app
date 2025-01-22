@@ -5,6 +5,7 @@ import { ToastContainer, toast } from "react-toastify"; // Only use this import
 
 import Image from "next/image"; // Import Image component from Next.js
 import "react-toastify/dist/ReactToastify.css"; // Import Toastify styles
+import HeroPage from "./HeroPage";
 
 const CartPage: React.FC = () => {
   const [cart, setCart] = useState<number[]>([]); // Cart state (only IDs)
@@ -99,18 +100,7 @@ const CartPage: React.FC = () => {
   return (
     <div className="relative bg-white">
       {/* Hero Section with subtle background animation */}
-      <section className="bg-gradient-to-r from-gray-800 to-black text-gray-100 text-center py-24 relative animate-background">
-        <div className="absolute inset-0 bg-cover bg-center opacity-50" style={{ backgroundImage: "url('/one.jpg')" }}></div>
-        <div className="relative z-10 flex items-center justify-center h-full">
-          <div className="text-center px-6 md:px-12">
-            <h1 className="text-5xl font-extrabold leading-tight mb-6 animate-text">Bring Home Your New Alien Friend Today!</h1>
-            <p className="text-2xl md:text-3xl mb-8 max-w-xl mx-auto animate-text">
-              Adopt a unique alien pet and embark on an intergalactic adventure like never before!
-            </p>
-          </div>
-        </div>
-      </section>
-
+    <HeroPage title="Your Cart" subtitle="Adopt your new intergalactic companion today!" backgroundImage="/three.jpg" />
       {/* Cart Page Content */}
       <div className="mt-6 px-6 md:px-12 pb-8">
         <h1 className="text-3xl font-semibold text-gray-800 mb-6 text-center">Your Cart</h1>

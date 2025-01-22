@@ -120,12 +120,18 @@ const Carousel = ({ images }: { images: string[] }) => {
     <div className="absolute inset-0 h-[100vh] w-full z-[-1] overflow-hidden">
       {images.map((image, index) => (
         <motion.div
-          key={index}
-          initial={{ opacity: 0 }}
-          animate={{ opacity: currentIndex === index ? 1 : 0 }}
-          transition={{ duration: 1 }}
-          className="absolute inset-0 w-full h-full"
-        >
+        key={index}
+        initial={{ opacity: 0 }}
+        animate={{
+          opacity: currentIndex === index ? 1 : 0,
+          scale: currentIndex === index ? [1, 1.1, 1] : 1, // Apply zoom only to the active image
+        }}
+        transition={{
+          opacity: { duration: 1 },
+          scale: { duration: 10, repeat: Infinity, repeatType: "reverse", ease: "easeInOut" },
+        }}
+        className="absolute inset-0 w-full h-full"
+      >
           <Image
             src={image}
             alt={`Carousel Image ${index + 1}`}
