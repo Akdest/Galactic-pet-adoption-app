@@ -1,4 +1,3 @@
-import Link from "next/link";
 import React from "react";
 import BlogCard from "./Blog";
 import { blogs } from "../data/blogs"; // Import blog data

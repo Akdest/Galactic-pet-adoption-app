@@ -160,7 +160,7 @@ const Page = () => {
 
           {/* Comments Section */}
           <div className="mt-8">
-            <h2 className="text-2xl font-semibold text-gray-900">Comments</h2>
+            <h2 className="text-2xl flex gap-x-4 font-semibold text-gray-900"><FaComment/>Comments</h2>
             <form onSubmit={handleCommentSubmit} className="mt-4">
               <textarea
                 value={comment}
