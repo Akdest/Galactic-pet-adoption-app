@@ -4,6 +4,7 @@ import { IconArrowLeft, IconArrowRight } from "@tabler/icons-react";
 import { motion, AnimatePresence } from "framer-motion";
 import Image from "next/image";
 import { useEffect, useState } from "react";
+import { testimonials } from "../data/testimonials";
 
 type Testimonial = {
   quote: string;
@@ -12,45 +13,32 @@ type Testimonial = {
   src: string;
 };
 
-export const AnimatedTestimonials = ({
-  testimonials,
-  autoplay = false,
-}: {
-  testimonials: Testimonial[] | undefined;
-  autoplay?: boolean;
-}) => {
+export const AnimatedTestimonials = ({ autoplay = false }: { autoplay?: boolean }) => {
   const [active, setActive] = useState(0);
 
   const handleNext = () => {
-    setActive((prev) => (prev + 1) % (testimonials?.length || 1));
+    setActive((prev) => (prev + 1) % testimonials.length);
   };
 
   const handlePrev = () => {
-    setActive((prev) => (prev - 1 + (testimonials?.length || 1)) % (testimonials?.length || 1));
+    setActive((prev) => (prev - 1 + testimonials.length) % testimonials.length);
   };
 
-  const isActive = (index: number) => {
-    return index === active;
-  };
+  const isActive = (index: number) => index === active;
 
   useEffect(() => {
-    if (autoplay && testimonials && testimonials.length > 0) {
+    if (autoplay && testimonials.length > 0) {
       const interval = setInterval(handleNext, 5000);
       return () => clearInterval(interval);
     }
-  }, [autoplay, testimonials]);
+  }, [autoplay]);
 
-  const randomRotateY = () => {
-    return Math.floor(Math.random() * 21) - 10;
-  };
+  const randomRotateY = () => Math.floor(Math.random() * 21) - 10;
 
-  // Ensure testimonials exist before rendering content
-  if (!testimonials || testimonials.length === 0) {
+  if (testimonials.length === 0) {
     return (
       <div className="max-w-sm md:max-w-4xl mx-auto antialiased font-sans px-4 md:px-8 lg:px-12 py-20">
-        <p className="text-center text-lg text-gray-500 dark:text-neutral-300">
-          No testimonials available.
-        </p>
+        <p className="text-center text-lg text-gray-500 dark:text-neutral-300">No testimonials available.</p>
       </div>
     );
   }
@@ -64,12 +52,7 @@ export const AnimatedTestimonials = ({
               {testimonials.map((testimonial, index) => (
                 <motion.div
                   key={testimonial.src}
-                  initial={{
-                    opacity: 0,
-                    scale: 0.9,
-                    z: -100,
-                    rotate: randomRotateY(),
-                  }}
+                  initial={{ opacity: 0, scale: 0.9, z: -100, rotate: randomRotateY() }}
                   animate={{
                     opacity: isActive(index) ? 1 : 0.7,
                     scale: isActive(index) ? 1 : 0.95,
@@ -78,16 +61,8 @@ export const AnimatedTestimonials = ({
                     zIndex: isActive(index) ? 999 : testimonials.length + 2 - index,
                     y: isActive(index) ? [0, -80, 0] : 0,
                   }}
-                  exit={{
-                    opacity: 0,
-                    scale: 0.9,
-                    z: 100,
-                    rotate: randomRotateY(),
-                  }}
-                  transition={{
-                    duration: 0.4,
-                    ease: "easeInOut",
-                  }}
+                  exit={{ opacity: 0, scale: 0.9, z: 100, rotate: randomRotateY() }}
+                  transition={{ duration: 0.4, ease: "easeInOut" }}
                   className="absolute inset-0 origin-bottom"
                 >
                   <Image
@@ -119,11 +94,7 @@ export const AnimatedTestimonials = ({
                   key={index}
                   initial={{ filter: "blur(10px)", opacity: 0, y: 5 }}
                   animate={{ filter: "blur(0px)", opacity: 1, y: 0 }}
-                  transition={{
-                    duration: 0.2,
-                    ease: "easeInOut",
-                    delay: 0.02 * index,
-                  }}
+                  transition={{ duration: 0.2, ease: "easeInOut", delay: 0.02 * index }}
                   className="inline-block"
                 >
                   {word}&nbsp;

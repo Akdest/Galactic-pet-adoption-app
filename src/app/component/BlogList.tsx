@@ -1,6 +1,6 @@
 "use client";
-import React from 'react';
-import BlogCard from './Blog';
+import React from "react";
+import BlogCard from "./Blog";
 
 const BlogList = () => {
   const blogs = [
@@ -13,6 +13,10 @@ const BlogList = () => {
       date: "2025-01-14",
       wordCount: 500,
       tags: ["alien pets", "pet care", "galactic life"],
+      author: {
+        name: "Luna Stellar",
+        avatar: "/hseven.jpg",
+      },
     },
     {
       title: "Caring for Space Creatures",
@@ -23,11 +27,29 @@ const BlogList = () => {
       date: "2025-01-12",
       wordCount: 400,
       tags: ["space pets", "care guide", "alien care"],
+      author: {
+        name: "Orion Skye",
+        avatar: "/htwelwe.jpg",
+      },
+    },
+    {
+      title: "The Science Behind Galactic Pet Communication",
+      description: "Understanding how alien pets interact with humans.",
+      thumbnail: "/blogthree.jpg",
+      link: "/",
+      category: "Pet Behavior",
+      date: "2025-01-10",
+      wordCount: 600,
+      tags: ["alien pets", "communication", "pet psychology"],
+      author: {
+        name: "Nova Ray",
+        avatar: "/hfour.jpg",
+      },
     },
   ];
 
   return (
-    <div className=" mx-auto py-10 bg-white px-4 md:px-8">
+    <div className="mx-auto py-10 bg-white px-4 md:px-8">
       <h2 className="text-3xl font-semibold text-gray-800 text-center mb-12">
         Discover Galactic Pet Tips 🐾
       </h2>
