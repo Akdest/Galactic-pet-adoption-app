@@ -8,29 +8,6 @@ import { motion } from "framer-motion";
 import Link from "next/link";
 
 // Define a Pet interface
-interface Pet {
-  id: number;
-  name: string;
-  planet: string;
-  image: string;
-  quantity: number;
-  stock: number;
-  features: string[];
-  rating: number;
-  species: string;
-  shortDescription: string;
-  description: string;
-  additionalImages: string[];
-  age: number;
-  price: number;
-  behavior: string;
-  preferredEnvironment: string;
-  trainingDifficulty: string;
-  temperament: string;
-  funFact: string;
-  adoptionSuccessRate: number;
-  lifeExpectancy: number;
-}
 
 const NewestArrivals: React.FC = () => {
   const [cart, setCart] = useState<number[]>([]);
