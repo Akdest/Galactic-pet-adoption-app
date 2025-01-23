@@ -117,7 +117,7 @@ const Page = () => {
             </div>
           </div>
 
-          <h1 className="text-4xl font-extrabold text-gray-900">{blog.title}</h1>
+          <h1 className="text-3xl lg:text-4xl  font-extrabold text-gray-900">{blog.title}</h1>
 
           {/* Date & Author */}
           <div className="flex items-center justify-between text-gray-500 text-sm mt-3">
