@@ -106,13 +106,14 @@ const ProductDetails = () => {
       <div className="bg-white text-black p-8 mt-16 w-full flex flex-col lg:flex-row gap-x-8">
         {/* Left Section: Image */}
         <div className="w-full lg:w-1/2 mb-6 lg:mb-0">
-          <Image
-            src={product.image}
-            alt={product.name}
-            width={500}
-            height={500}
-            className="w-full h-auto object-cover rounded-md"
-          />
+        <Image
+  src={product.image}
+  alt={product.name}
+  width={500} // Replace 500 with a specific value, or use the correct dynamic width for your layout
+  height={400} // This is fine, or you can adjust based on your design needs
+  className="object-cover rounded-md w-full h-1/2" // Ensure full width and maintain the aspect ratio
+/>
+
           <p className="text-gray-500 mt-6">🛸 Additional Images:</p>
           <div className="flex flex-wrap gap-4">
             {product.additionalImages.map((image: string, index: number) => (

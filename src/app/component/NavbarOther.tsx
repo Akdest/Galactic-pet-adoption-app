@@ -65,7 +65,7 @@ export default function NavbarOther() {
     <Disclosure as="nav" className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${isScrolled ? 'bg-white' : 'bg-white'}`}>
       {({ open }) => (
         <>
-          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className=" px-4 sm:px-6 lg:px-8">
             <div className="flex justify-between items-center h-16">
               {/* Logo */}
               <div className="flex-shrink-0">
@@ -73,7 +73,7 @@ export default function NavbarOther() {
               </div>
               <div className="absolute left-1/2 transform -translate-x-1/2">
       <Link href="/pages/Product">
-        <PawPrint className={`cursor-pointer transition-all duration-300 ${isScrolled ? 'text-black' : 'text-white'}`} />
+        <PawPrint className="cursor-pointer transition-all duration-300 text-black" />
       </Link>
     </div>
               <div className="flex-1"></div>
