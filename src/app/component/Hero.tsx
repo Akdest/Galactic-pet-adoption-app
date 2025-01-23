@@ -185,7 +185,7 @@ const Header = () => {
       </p>
       <div className="flex justify-center mt-12 relative z-10">
         <button
-          onClick={() => (window.location.href = "/pages/AdoptionList")}
+          onClick={() => (window.location.href = "/pages/Product")}
           className="bg-gradient-to-r from-pink-500 to-purple-600 text-white font-semibold py-2 px-6 rounded-full shadow-lg hover:shadow-pink-700 hover:scale-105 transition-all duration-300"
         >
           Adopt Now

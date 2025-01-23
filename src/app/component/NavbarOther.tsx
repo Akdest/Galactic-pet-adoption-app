@@ -1,7 +1,7 @@
 "use client";
 import { useState, useEffect } from "react";
 import Image from "next/image";
-import { Menu, X, ChevronRight, User, ShoppingCart } from "lucide-react"; 
+import { Menu, X, ChevronRight, User, ShoppingCart, PawPrint } from "lucide-react"; 
 import Link from "next/link";
 import { Disclosure, Transition } from "@headlessui/react";
 import { motion } from "framer-motion";
@@ -71,7 +71,11 @@ export default function NavbarOther() {
               <div className="flex-shrink-0">
                 <LogoOther />
               </div>
-
+              <div className="absolute left-1/2 transform -translate-x-1/2">
+      <Link href="/pages/Product">
+        <PawPrint className={`cursor-pointer transition-all duration-300 ${isScrolled ? 'text-black' : 'text-white'}`} />
+      </Link>
+    </div>
               <div className="flex-1"></div>
 
               {/* Profile & Cart Icons */}
