@@ -3,7 +3,7 @@ import React, { useState, useEffect } from "react";
 import { Toaster, toast } from "react-hot-toast";
 import Image from "next/image";
 import { alienPetsnew } from "../data/newarrivals";
-import { FaShoppingCart, FaRocket, FaRupeeSign, FaArrowRight } from "react-icons/fa";
+import { FaShoppingCart, FaRocket, FaRupeeSign } from "react-icons/fa";
 import { motion } from "framer-motion";
 import Link from "next/link";
 
@@ -34,8 +34,7 @@ interface Pet {
 
 const NewestArrivals: React.FC = () => {
   const [cart, setCart] = useState<number[]>([]);
-  const [showModal, setShowModal] = useState<boolean>(false);
-  const [selectedPet, setSelectedPet] = useState<Pet | null>(null); // Updated type
+  
 
   useEffect(() => {
     const storedCart = localStorage.getItem("cart");
@@ -58,15 +57,7 @@ const NewestArrivals: React.FC = () => {
     }
   };
 
-  const openModal = (pet: Pet) => {
-    setSelectedPet(pet);
-    setShowModal(true);
-  };
 
-  const closeModal = () => {
-    setShowModal(false);
-    setSelectedPet(null);
-  };
 
   return (
     <div className="container mx-auto px-4 py-8 bg-white">
