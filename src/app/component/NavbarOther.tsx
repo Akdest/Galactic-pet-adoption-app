@@ -13,7 +13,7 @@ const NAVLINKS = [
   { href: "/", text: "HOME" },
   { href: "#", text: "ABOUT US" },
   { href: "/pages/Login", text: "LOGIN" },
-  { href: "/pages/AdoptionList", text: "ADOPTION LIST" },
+  { href: "/pages/Product", text: "ADOPTION LIST" },
   {
     href: "",
     text: "SERVICES",
