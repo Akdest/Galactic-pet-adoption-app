@@ -71,7 +71,7 @@ const Page = () => {
   };
 
   return (
-    <div className="bg-white min-h-screen flex flex-col">
+    <div className="bg-white w-full min-h-screen flex flex-col">
       <NavbarOther />
 
       
@@ -80,12 +80,12 @@ const Page = () => {
         initial={{ opacity: 0, y: 50 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.5 }}
-        className="w-full h-full mt-16 flex justify-center items-center px-6"
+        className="w-full h-full mt-16 flex justify-center items-center"
       >
         
         <div className="w-full bg-white shadow-2xl rounded-lg p-6 md:p-10 relative">
           {/* Scroll Progress Bar */}
-      <div className="fixed top-16 left-0 h-1 z-100 bg-pink-600" style={{ width: `${scrollProgress}%` }}></div>
+      <div className="fixed top-16 left-0 h-1 z-500 bg-pink-600" style={{ width: `${scrollProgress}%` }}></div>
           <button
             onClick={() => router.back()}
             className="absolute top-5 right-5 bg-gray-200 hover:bg-red-600 hover:text-white text-gray-700 p-2 rounded-full transition-all shadow-md"
