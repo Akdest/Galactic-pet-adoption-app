@@ -7,21 +7,7 @@ import { FaShoppingCart, FaArrowRight, FaRupeeSign, FaShareAlt, FaArrowLeft } fr
 import { motion } from "framer-motion";
 import { useEffect, useState } from "react";
 
-interface Pet {
-  id: number;
-  name: string;
-  image: string;
-  additionalImages: string[];
-  planet: string;
-  age: number;
-  price: number;
-  features: string[];
-  rating: number;
-  description: string;
-  adoptionSuccessRate: number;
-  lifeExpectancy: number;
-  stock: number;
-}
+
 import { toast, ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import {
