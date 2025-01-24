@@ -4,6 +4,7 @@ import { motion } from "framer-motion";
 import { FaEnvelope, FaPhone, FaMapMarkerAlt, FaUser, FaPaperPlane, FaCheckCircle, FaSpinner } from "react-icons/fa";
 import { Toaster, toast } from "react-hot-toast";
 import VoiceInput from "./Mic"; // Import the VoiceInput component
+import { TypeAnimation } from "react-type-animation";
 
 const ContactUs = () => {
   const [formData, setFormData] = useState({ name: "", email: "", message: "" });
@@ -47,16 +48,18 @@ const ContactUs = () => {
       {/* Toast Notification Component */}
       <Toaster position="top-center" reverseOrder={false} />
 
-      {/* 🚀 Contact Header */}
       <motion.h2
-        initial={{ opacity: 0, y: -20 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 1 }}
-        className="text-4xl md:text-5xl font-bold text-center mb-10"
-      >
-        Get In Touch
-      </motion.h2>
-
+  initial={{ opacity: 0, y: -20 }}
+  animate={{ opacity: 1, y: 0 }}
+  transition={{ duration: 1 }}
+  className="text-4xl md:text-5xl font-bold text-center mb-10"
+>
+  <TypeAnimation
+    sequence={["Get In Touch", 1000, "Let's Connect", 1000, "Reach Out!", 1000]}
+    speed={50}
+    repeat={Infinity}
+  />
+</motion.h2>
       {/* 💫 Contact Cards */}
       <div className="flex flex-wrap justify-center gap-6 md:gap-8 mb-12">
         {[

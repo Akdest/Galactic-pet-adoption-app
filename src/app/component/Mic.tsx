@@ -3,34 +3,65 @@ import { useState, useEffect, useRef } from "react";
 import { FaMicrophone } from "react-icons/fa";
 import { toast } from "react-hot-toast";
 
+// Define the SpeechRecognition interface
+interface SpeechRecognition {
+  continuous: boolean;
+  lang: string;
+  interimResults: boolean;
+  start(): void;
+  stop(): void;
+  onresult: (event: SpeechRecognitionEvent) => void;
+  onerror: (event: SpeechRecognitionErrorEvent) => void;
+}
+
+// Define the event interface for SpeechRecognitionEvent
+interface SpeechRecognitionEvent {
+  results: SpeechRecognitionResultList;
+}
+
+// Define the event interface for SpeechRecognitionErrorEvent
+interface SpeechRecognitionErrorEvent {
+  error: string;
+}
+
+// Extend Window interface to include the SpeechRecognition API
+declare global {
+  interface Window {
+    SpeechRecognition: SpeechRecognition;
+    webkitSpeechRecognition: SpeechRecognition;
+  }
+}
+
 const VoiceInput = ({ onText }: { onText: (text: string) => void }) => {
   const [isListening, setIsListening] = useState(false);
-  const recognitionRef = useRef<any>(null);
+  const recognitionRef = useRef<SpeechRecognition | null>(null);
 
   useEffect(() => {
-    if (!("webkitSpeechRecognition" in window)) {
+    if (!("SpeechRecognition" in window || "webkitSpeechRecognition" in window)) {
       toast.error("Speech Recognition not supported in this browser.");
       return;
     }
 
-    const SpeechRecognition =
-    (window as any).SpeechRecognition || (window as any).webkitSpeechRecognition;
-  
-    const recognition = new SpeechRecognition();
+    const SpeechRecognitionConstructor =
+      window.SpeechRecognition || window.webkitSpeechRecognition;
+
+    // Explicitly type the constructor
+    const recognition = new (SpeechRecognitionConstructor as unknown as { new (): SpeechRecognition })();
+
     recognition.continuous = false;
     recognition.lang = "en-US";
     recognition.interimResults = false;
 
-    recognition.onresult = (event: any) => {
+    recognition.onresult = (event: SpeechRecognitionEvent) => {
       const transcript = event.results[0][0].transcript;
       onText(transcript);
       setIsListening(false);
       toast.success("Speech recognized!", { position: "top-center" });
     };
 
-    recognition.onerror = (event: any) => {
-      console.error("Speech recognition error", event.error);
-      toast.error("Error with speech recognition.");
+    recognition.onerror = (event: SpeechRecognitionErrorEvent) => {
+      console.error("Speech recognition error:", event.error);
+      toast.error(`Error: ${event.error}`);
       setIsListening(false);
     };
 
