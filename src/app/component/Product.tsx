@@ -131,7 +131,7 @@ const Product = () => {
  
             <h2 className="text-xl font-bold text-black mt-2">{pet.name}</h2>
             <p className="text-black">{pet.species} from {pet.planet}</p>
-            <p className="text-black mt-2">{pet.shortDescription}</p>
+            <p className="text-gray-800 mt-2">{pet.shortDescription}</p>
 
             {/* Additional Features */}
             <div className="flex items-center mt-3">
@@ -167,7 +167,7 @@ const Product = () => {
                   cart.includes(pet.id)
                     ? "bg-gradient-to-r from-red-500 to-red-600"
                     : "bg-gradient-to-r from-green-500 to-teal-500"
-                } text-white px-6 py-2 rounded-lg flex items-center gap-2 hover:scale-105 transition-all duration-300`}
+                } text-white px-4 py-2 rounded-lg flex items-center gap-2 hover:scale-105 transition-all duration-300`}
               >
                 <FaShoppingCart /> {cart.includes(pet.id) ? "Remove" : "Add to Cart"}
               </motion.button>
@@ -177,7 +177,7 @@ const Product = () => {
               >
                 <motion.button
                                 whileTap={{ scale: 0.95 }}
-                                className="bg-gradient-to-r from-pink-500 to-purple-600 text-white font-semibold px-6 py-2 rounded-lg flex items-center shadow-lg hover:shadow-pink-700 hover:scale-105 transition-all duration-300"
+                                className="bg-gradient-to-r from-pink-500 to-purple-600 text-white font-semibold px-4 py-2 rounded-lg flex items-center shadow-lg hover:shadow-pink-700 hover:scale-105 transition-all duration-300"
                               >
                                 <FaRocket /> Adopt Now
                               </motion.button>

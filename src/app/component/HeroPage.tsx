@@ -13,7 +13,7 @@ const HeroPage = ({
 }) => {
   return (
     <div>
-      <section className="bg-gradient-to-r from-gray-800 to-black text-gray-100 text-center py-24 relative overflow-hidden">
+      <section className="bg-gradient-to-r from-gray-800 to-black text-gray-100 text-center py-32 relative overflow-hidden">
         {/* Animated Background Image */}
         <motion.div
           className="absolute inset-0 bg-cover bg-center opacity-50"
@@ -32,7 +32,7 @@ const HeroPage = ({
         {/* Content */}
         <div className="relative z-10 flex items-center justify-center h-full">
           <motion.div
-            className="text-center px-6 md:px-12"
+            className="text-center px-6 md:px-12 "
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 1, ease: "easeOut" }}
@@ -47,7 +47,7 @@ const HeroPage = ({
             </motion.h1>
 
             <motion.p
-              className="text-2xl md:text-3xl mb-8 max-w-xl mx-auto"
+              className="text-2xl md:text-3xl mb-8 mx-auto"
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 1.2, delay: 0.4 }}

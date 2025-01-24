@@ -67,7 +67,7 @@ const PaymentPage: React.FC = () => {
         <motion.button
           whileHover={{ scale: 1.1 }}
           className="bg-gradient-to-r from-blue-500 to-teal-400 text-white font-semibold py-2 px-6 rounded-lg shadow-lg transform transition-all duration-300 ease-in-out mt-4 hover:bg-gradient-to-l hover:from-teal-400 hover:to-blue-500"
-          onClick={() => (window.location.href = "/pages/AdoptionList")}
+          onClick={() => (window.location.href = "/pages/Product")}
         >
           Continue Shopping
         </motion.button>

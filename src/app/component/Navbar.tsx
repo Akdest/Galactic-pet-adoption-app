@@ -10,7 +10,7 @@ import { FaHome } from "react-icons/fa";
 
 const NAVLINKS = [
   { href: "/", text: "HOME" },
-  { href: "#", text: "ABOUT US" },
+  { href: "/pages/About", text: "ABOUT US" },
   { href: "/pages/Login", text: "LOGIN" },
   { href: "/pages/Product", text: "ADOPTION LIST" },
   {
