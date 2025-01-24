@@ -97,7 +97,7 @@ const NewestArrivals: React.FC = () => {
                   cart.includes(pet.id)
                     ? "bg-gradient-to-r from-red-500 to-red-600"
                     : "bg-gradient-to-r from-green-500 to-teal-500"
-                } text-white px-6 py-2 rounded-lg flex items-center gap-2 hover:scale-105 transition-all duration-300`}
+                } text-white px-4 py-2 rounded-lg flex items-center gap-2 hover:scale-105 transition-all duration-300`}
               >
                 <FaShoppingCart /> {cart.includes(pet.id) ? "Remove" : "Add to Cart"}
               </motion.button>
@@ -105,7 +105,7 @@ const NewestArrivals: React.FC = () => {
               <Link href={`../pages/Prod/${pet.name.toLowerCase().replace(/\s+/g, "-")}`}>
                 <motion.button
                   whileTap={{ scale: 0.95 }}
-                  className="bg-gradient-to-r from-pink-500 to-purple-600 text-white font-semibold px-6 py-2 rounded-lg flex items-center shadow-lg hover:shadow-pink-700 hover:scale-105 transition-all duration-300"
+                  className="bg-gradient-to-r from-pink-500 to-purple-600 text-white font-semibold px-4 py-2 rounded-lg flex items-center shadow-lg hover:shadow-pink-700 hover:scale-105 transition-all duration-300"
                 >
                   <FaRocket /> Adopt Now
                 </motion.button>

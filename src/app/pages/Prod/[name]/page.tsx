@@ -184,7 +184,7 @@ const ProductDetails = () => {
             <motion.button
               whileTap={{ scale: 0.95 }}
               onClick={() => toggleCart(product.id, product.name)}
-              className={`w-full py-2 px-6 rounded-lg text-center flex items-center justify-center gap-2 transition-all duration-300 ${cart.includes(product.id) ? "bg-red-600" : "bg-green-500"} text-white font-semibold hover:scale-105`}
+              className={`w-full py-2 px-4 rounded-lg text-center flex items-center justify-center gap-2 transition-all duration-300 ${cart.includes(product.id) ? "bg-red-600" : "bg-green-500"} text-white font-semibold hover:scale-105`}
             >
               <FaShoppingCart />
               <span>{cart.includes(product.id) ? "Remove from Cart" : "Add to Cart"}</span>
@@ -193,7 +193,7 @@ const ProductDetails = () => {
             <motion.button
               whileTap={{ scale: 0.95 }}
               onClick={handleCheckout}
-              className="w-full py-2 px-6 rounded-lg text-white font-semibold flex items-center justify-center gap-2 bg-yellow-500 hover:bg-yellow-600 transition-all duration-300"
+              className="w-full py-2 px-4 rounded-lg text-white font-semibold flex items-center justify-center gap-2 bg-yellow-500 hover:bg-yellow-600 transition-all duration-300"
             >
               <FaArrowRight />
               <span>Proceed to Checkout</span>
