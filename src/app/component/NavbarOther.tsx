@@ -23,7 +23,7 @@ const NAVLINKS = [
   
   { href: "/pages/Cart", text: "ADOPTION CART" },
   
-  { href: "#", text: "CONTACT US" },
+  { href: "/pages/Contact", text: "CONTACT US" },
 ];
 
 export default function NavbarOther() {
