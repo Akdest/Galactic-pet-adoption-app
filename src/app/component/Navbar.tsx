@@ -12,26 +12,16 @@ const NAVLINKS = [
   { href: "/", text: "HOME" },
   { href: "/pages/About", text: "ABOUT US" },
   { href: "/pages/Login", text: "LOGIN" },
-  { href: "/pages/Product", text: "ADOPTION LIST" },
-  {
-    href: "",
-    text: "SERVICES",
+  { href: "", text: "ADOPTION LIST",
     subMenu: [
-      { href: "#", text: "PET CARE TIPS" },
-      { href: "#", text: "PET TRAINING" },
-      { href: "#", text: "HEALTH CHECKUP PLANS" },
+      { href: "/pages/Product", text: "DOGS" },
+      { href: "/pages/Product", text: "CATS" },
+      { href: "/pages/Product", text: "RABITTS" },
     ],
-  },
+   },
+  
   { href: "/pages/Cart", text: "ADOPTION CART" },
-  {
-    href: "",
-    text: "COMMUNITY",
-    subMenu: [
-      { href: "#", text: "DISCUSSION FORUMS" },
-      { href: "#", text: "UPCOMING EVENTS" },
-      { href: "#", text: "VOLUNTEER WITH US" },
-    ],
-  },
+  
   { href: "#", text: "CONTACT US" },
 ];
 
