@@ -101,7 +101,7 @@ To get started with the Galactic Pet Adoption App locally:
 1.   Clone the Repository  :
 
    ```bash
-   git clone https://github.com/Akdest/galactic-pet-adoption.git
+   git clone https://github.com/Akdest/pet-app.git
    ```
 
 2.   Navigate to the project directory  :
