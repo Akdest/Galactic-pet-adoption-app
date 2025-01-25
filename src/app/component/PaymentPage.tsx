@@ -48,6 +48,21 @@ const PaymentPage: React.FC = () => {
     toast.success("Processing Payment...", { autoClose: 1500 });
     setTimeout(() => setIsSuccess(true), 2000);
   };
+  const handleContinueShopping = () => {
+    // Simulate adopting a pet when the button is clicked
+    const newActivity = { 
+      title: `Adopted New Pet`, 
+      description: "You successfully adopted a new alien pet! 🚀" 
+      , timestamp: new Date().toISOString()
+    };
+
+    // Store the new activity in localStorage
+    const existingActivities = JSON.parse(localStorage.getItem("recentActivities") || "[]");
+    localStorage.setItem("recentActivities", JSON.stringify([newActivity, ...existingActivities]));
+
+    // Redirect to the products page
+    window.location.href = "/pages/Product";
+  };
 
   return (
     <div className="min-h-screen flex flex-col items-center justify-center p-6 bg-white text-black">
@@ -67,7 +82,7 @@ const PaymentPage: React.FC = () => {
         <motion.button
           whileHover={{ scale: 1.1 }}
           className="bg-gradient-to-r from-blue-500 to-teal-400 text-white font-semibold py-2 px-6 rounded-lg shadow-lg transform transition-all duration-300 ease-in-out mt-4 hover:bg-gradient-to-l hover:from-teal-400 hover:to-blue-500"
-          onClick={() => (window.location.href = "/pages/Product")}
+          onClick={handleContinueShopping}
         >
           Continue Shopping
         </motion.button>
