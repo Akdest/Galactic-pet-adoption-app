@@ -50,10 +50,10 @@ const Product = () => {
   const toggleCart = (id: number, name: string) => {
     if (cart.includes(id)) {
       setCart(cart.filter((petId) => petId !== id));
-      toast.error(`${name} Removed from Cart`); // Trigger error toast
+      toast.error(`${name} Removed from Cart`, { position: "top-center" }); // Trigger error toast
     } else {
       setCart([...cart, id]);
-      toast.success(`${name} Added to Cart`); // Trigger success toast
+      toast.success(`${name} Added to Cart`, { position: "top-center" }); // Trigger success toast
     }
   };
 

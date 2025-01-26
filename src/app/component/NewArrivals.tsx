@@ -27,10 +27,10 @@ const NewestArrivals: React.FC = () => {
   const toggleCart = (id: number, name: string) => {
     if (cart.includes(id)) {
       setCart(cart.filter((petId) => petId !== id));
-      toast.error(`${name} Removed from Cart`);
+      toast.error(`${name} Removed from Cart`, { position: "top-center" });
     } else {
       setCart([...cart, id]);
-      toast.success(`${name} Added to Cart`);
+      toast.success(`${name} Added to Cart`, { position: "top-center" });
     }
   };
 
