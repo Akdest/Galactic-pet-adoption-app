@@ -1,6 +1,3 @@
-Here’s a **Code of Conduct** tailored for your **Galactic Pet Adoption App** GitHub repository:
-
----
 
 # Code of Conduct - Galactic Pet Adoption App
 
