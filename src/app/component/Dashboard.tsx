@@ -1,13 +1,15 @@
 "use client";
 import { useState, useEffect } from "react";
+import Link from "next/link";
 import { motion } from "framer-motion";
-import {  IconMenu, IconX } from "@tabler/icons-react";
+import {  IconLogout, IconMenu, IconX } from "@tabler/icons-react";
 import { alienPets } from "../data/alienPets"; // Adjust the import path as necessary
 import { ToastContainer, toast } from "react-toastify"; // Only use this import
 
 import Image from "next/image"; // Import Image component from Next.js
 import "react-toastify/dist/ReactToastify.css"; // Import Toastify styles
-import { BarChart3, Bell, ShoppingCart, Users, CheckCircle, Activity, LayoutDashboard, User, Settings, ListChecks } from "lucide-react"
+import { BarChart3, Bell, ShoppingCart, Users, CheckCircle, Activity, LayoutDashboard, User, Settings, ListChecks,DollarSign, Heart,  } from "lucide-react";
+import {  FaGithub, FaLinkedin, FaListAlt, FaLock, FaShoppingCart, FaSignOutAlt,   } from "react-icons/fa";
 
 const Dashboard = () => {
   const [activeTab, setActiveTab] = useState("overview");
@@ -29,9 +31,9 @@ const Dashboard = () => {
        setActivities(storedActivities);
      }, []);
 
-     useEffect(() => {
-      localStorage.removeItem("recentActivities");
-    }, []);
+    //  useEffect(() => {
+    //   localStorage.removeItem("recentActivities");
+    // }, []);
     
     // Load cart from localStorage when the component mounts
     // Load cart from localStorage when the component mounts
@@ -130,21 +132,113 @@ const Dashboard = () => {
     ];
     
 
+    const handleLogout = () => {
+      // Clear session data (e.g., tokens, user data, etc.)
+      localStorage.removeItem("authToken"); // or sessionStorage, depending on where you store tokens
+      sessionStorage.removeItem("user");
+    
+      // Redirect the user to the login page (or any public page)
+      window.location.href = "/pages/Login"; // Update this path based on your routing system (e.g., Next.js or React Router)
+    };
+    
+
 
   // Function to render dashboard content
   const renderContent = () => {
     switch (activeTab) {
       case "profile":
+
+      
         return (
-          <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.5 }}>
-            <h2 className="text-2xl font-bold mb-4">Profile</h2>
-            <p className="text-gray-300 mb-6">Manage your profile settings and personal details.</p>
-            <div className="flex items-center gap-4">
-              <img src="https://via.placeholder.com/100" alt="Profile" className="rounded-full" />
-              <div>
-                <h3 className="text-xl font-semibold">John Doe</h3>
-                <p className="text-gray-400">john.doe@example.com</p>
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5 }}
+          >
+            <h2 className="text-3xl text-black text-center font-bold mb-4">Profile</h2>
+            <p className="text-gray-800 text-center mb-6">
+              Manage your profile settings and personal details.
+            </p>
+            <motion.div
+  className="flex flex-col items-center justify-center p-4 bg-white rounded-lg shadow-xl w-full md:w-2/3 lg:w-1/2 mx-auto mb-8"
+  initial={{ opacity: 0, y: 20 }}
+  animate={{ opacity: 1, y: 0 }}
+  transition={{ duration: 0.5 }}
+>
+  {/* Profile and Contact Information */}
+  <div className="flex flex-col items-center gap-6 mb-6"> {/* Adjust layout for sm, md, lg */}
+    <img
+      src="/hfive.jpg"
+      alt="Profile"
+      className="rounded-full w-24 h-24 object-cover border-4 border-indigo-600"
+    />
+    <div className="flex flex-col items-center justify-center text-center sm:text-left">
+      <h3 className="text-xl text-black font-semibold">Ayush Kumar</h3>
+      <p className="text-gray-800">ayushkr0104@gmail.com</p>
+    </div>
+  </div>
+
+  {/* Social Media Links */}
+  <div className="flex gap-6 text-gray-600"> {/* Default color */}
+    {/* LinkedIn Link */}
+    <Link href="https://www.linkedin.com/in/ayush-kumar-akdest/">
+      <motion.div
+        className="text-2xl cursor-pointer hover:text-indigo-800 transition duration-300 transform hover:scale-110"
+        whileHover={{ scale: 1.1, color: '#0A66C2' }}  // LinkedIn Blue on hover
+        initial={{ color: '#6e6e6e' }}  // Initial color (gray)
+      >
+        <FaLinkedin /> {/* LinkedIn icon */}
+      </motion.div>
+    </Link>
+
+    {/* GitHub Link */}
+    <Link href="https://github.com/Akdest">
+      <motion.div
+        className="text-2xl cursor-pointer hover:text-indigo-800 transition duration-300 transform hover:scale-110"
+        whileHover={{ scale: 1.1, color: '#000000' }}  // GitHub Black on hover
+        initial={{ color: '#6e6e6e' }}  // Initial color (gray)
+      >
+        <FaGithub /> {/* GitHub icon */}
+      </motion.div>
+    </Link>
+
+    {/* Twitter Link */}
+   
+   
+  </div>
+</motion.div>
+
+
+      
+            {/* Grid with square cards */}
+            <div className="grid grid-cols-2 gap-6">
+              {/* Edit Profile */}
+              <div className="flex flex-col items-center justify-center cursor-pointer hover:bg-gray-200 p-6 rounded-xl shadow-lg aspect-w-1 aspect-h-1 transform transition-all duration-300 ease-in-out hover:scale-105">
+              <FaLock className="text-4xl text-yellow-500 mb-2" />
+                <span className="text-xl text-gray-700">Change Password</span>
               </div>
+      
+              {/* Change Password */}
+              <div className="flex flex-col items-center justify-center cursor-pointer hover:bg-gray-200 p-6 rounded-xl shadow-lg aspect-w-1 aspect-h-1 transform transition-all duration-300 ease-in-out hover:scale-105">
+              <FaShoppingCart className="text-4xl text-blue-600 mb-2" />
+               
+                <span className="text-xl text-gray-700">Your Cart</span>
+              </div>
+      
+              {/* View Orders */}
+              <div className="flex flex-col items-center justify-center cursor-pointer hover:bg-gray-200 p-6 rounded-xl shadow-lg aspect-w-1 aspect-h-1 transform transition-all duration-300 ease-in-out hover:scale-105">
+                <FaListAlt className="text-4xl text-green-500 mb-2" />
+                <span className="text-xl text-gray-700">View Orders</span>
+              </div>
+      
+              {/* Log Out */}
+             <Link
+              href="/pages/Login">
+             <div className="flex flex-col items-center justify-center cursor-pointer hover:bg-gray-200 p-6 rounded-xl shadow-lg aspect-w-1 aspect-h-1 transform transition-all duration-300 ease-in-out hover:scale-105">
+                <FaSignOutAlt className="text-4xl text-red-500 mb-2" />
+                <span className="text-xl text-gray-700">Log Out</span>
+              </div>
+              </Link>
             </div>
           </motion.div>
         );
@@ -155,8 +249,8 @@ const Dashboard = () => {
               animate={{ opacity: 1, y: 0 }} 
               transition={{ duration: 0.5 }}
             >
-              <h2 className="text-2xl font-bold mb-4">Settings</h2>
-              <p className="text-gray-300 mb-6">Customize your dashboard preferences and account settings.</p>
+              <h2 className="text-3xl text-black text-center font-bold mb-4">Settings</h2>
+              <p className="text-gray-800 text-center mb-6">Customize your dashboard preferences and account settings.</p>
               <ul className="space-y-4">
                 
                 {/* Notifications Toggle */}
@@ -410,8 +504,8 @@ case "recent-activity":
       case "tasks":
         return (
           <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.5 }}>
-            <h2 className="text-2xl font-bold mb-4">Tasks</h2>
-            <p className="text-gray-300 mb-6">Manage and track your tasks here.</p>
+            <h2 className="text-3xl text-black text-center font-bold mb-4">Tasks</h2>
+            <p className="text-gray-800 text-center mb-6">Manage and track your tasks here.</p>
             <ul className="space-y-4">
               <li className="flex justify-between items-center p-3 bg-gray-800 rounded-lg hover:bg-gray-700">
                 <span>Task 1: Adopt a new pet</span>
@@ -422,122 +516,208 @@ case "recent-activity":
             </ul>
           </motion.div>
         );
-      case "analytics":
-        return (
-          <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.5 }}>
-            <h2 className="text-2xl font-bold mb-4">Analytics</h2>
-            <p className="text-gray-300 mb-6">Track your dashboard activity and performance.</p>
+     
+      
+        
+        
+        case "analytics":
+          return (
+            <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.5 }}>
+            <h2 className="text-3xl text-white text-center font-bold mb-4">📊 Analytics Dashboard</h2>
+            <p className="text-gray-400 text-center mb-8">
+              Track **adoptions, revenue, and notifications** with real-time updates.
+            </p>
+          
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-              <div className="bg-gray-800 p-4 rounded-lg shadow-lg">
-                <h3 className="font-semibold">Adoptions</h3>
-                <p className="text-gray-400">Total Pets Adopted: 12</p>
-              </div>
-              <div className="bg-gray-800 p-4 rounded-lg shadow-lg">
-                <h3 className="font-semibold">Notifications</h3>
-                <p className="text-gray-400">Unread Notifications: 5</p>
-              </div>
-              <div className="bg-gray-800 p-4 rounded-lg shadow-lg">
-                <h3 className="font-semibold">Revenue</h3>
-                <p className="text-gray-400">Total Revenue: $450</p>
-              </div>
+              {/* 🐾 Adoptions Card */}
+              <motion.div
+                whileHover={{ scale: 1.07 }}
+                whileTap={{ scale: 0.97 }}
+                className="bg-gradient-to-r from-pink-700 to-purple-800 p-6 rounded-xl shadow-lg hover:shadow-xl transition-all"
+              >
+                <div className="flex items-center justify-between mb-4">
+                  <motion.div animate={{ scale: [1, 1.2, 1] }} transition={{ repeat: Infinity, duration: 2 }}>
+                    <Heart className="text-white w-8 h-8" />
+                  </motion.div>
+                  <h3 className="text-lg font-semibold text-white">Adoptions</h3>
+                </div>
+                <p className="text-gray-200 text-xl font-bold">{activities.length} Total</p> {/* Dynamically show count */}
+              </motion.div>
+          
+              {/* 🔔 Notifications Card */}
+              <motion.div
+                whileHover={{ scale: 1.07 }}
+                whileTap={{ scale: 0.97 }}
+                className="bg-gradient-to-r from-blue-700 to-indigo-800 p-6 rounded-xl shadow-lg hover:shadow-xl transition-all"
+              >
+                <div className="flex items-center justify-between mb-4">
+                  <motion.div animate={{ rotate: [0, 10, -10, 0] }} transition={{ repeat: Infinity, duration: 2 }}>
+                    <Bell className="text-white w-8 h-8" />
+                  </motion.div>
+                  <h3 className="text-lg font-semibold text-white">Notifications</h3>
+                </div>
+                <p className="text-gray-200 text-xl font-bold">🔔 5 Unread</p>
+                <p className="text-sm text-gray-300 mt-1">Check your latest alerts</p>
+              </motion.div>
+          
+              {/* 💰 Revenue Card */}
+              <motion.div
+                whileHover={{ scale: 1.07 }}
+                whileTap={{ scale: 0.97 }}
+                className="bg-gradient-to-r from-green-700 to-teal-800 p-6 rounded-xl shadow-lg hover:shadow-xl transition-all"
+              >
+                <div className="flex items-center justify-between mb-4">
+                  <motion.div animate={{ scale: [1, 1.2, 1] }} transition={{ repeat: Infinity, duration: 2 }}>
+                    <DollarSign className="text-white w-8 h-8" />
+                  </motion.div>
+                  <h3 className="text-lg font-semibold text-white">Revenue</h3>
+                </div>
+                <p className="text-gray-200 text-xl font-bold">💰 $450</p>
+                <p className="text-sm text-gray-300 mt-1">Total earnings from pet adoptions</p>
+              </motion.div>
+          
+              {/* 📈 Activity Tracker */}
+              <motion.div
+                whileHover={{ scale: 1.07 }}
+                whileTap={{ scale: 0.97 }}
+                className="bg-gradient-to-r from-orange-600 to-red-700 p-6 rounded-xl shadow-lg hover:shadow-xl transition-all"
+              >
+                <div className="flex items-center justify-between mb-4">
+                  <motion.div animate={{scale: [1, 1.2, 1] }} transition={{ duration: 3, repeat: Infinity }}>
+                    <Activity className="text-white w-8 h-8" />
+                  </motion.div>
+                  <h3 className="text-lg font-semibold text-white">Activity</h3>
+                </div>
+                <p className="text-gray-200 text-xl font-bold">📊 +18% This Week</p>
+                <p className="text-sm text-gray-300 mt-1">Your engagement is growing!</p>
+              </motion.div>
+          
+              {/* 📉 Progress Bar */}
+              <motion.div
+                whileHover={{ scale: 1.07 }}
+                whileTap={{ scale: 0.97 }}
+                className="bg-gradient-to-r from-green-500 to-teal-600 p-6 rounded-xl shadow-lg hover:shadow-xl transition-all"
+              >
+                <div className="flex items-center justify-between mb-4">
+                  <motion.div animate={{ rotate: [0, 360] }} transition={{ duration: 3, repeat: Infinity }}>
+                    <span className="text-white w-8 h-8">🟢</span>
+                  </motion.div>
+                  <h3 className="text-lg font-semibold text-white">Progress</h3>
+                </div>
+                <p className="text-gray-200 text-xl font-bold">📊 {activities.length}% Completed</p>
+                <p className="text-sm text-gray-300 mt-1">Your engagement is growing!</p>
+          
+                {/* Progress Bar */}
+                <motion.div
+                  className="w-full h-2 bg-gray-600 rounded-full mt-4"
+                  initial={{ width: 0 }}
+                  animate={{ width: `${(activities.length / 8) * 100}%` }} // Adjust width based on activities.length
+                  transition={{ duration: 1, ease: "easeInOut" }}
+                >
+                  <motion.div className="h-full bg-gradient-to-r from-green-400 to-teal-600 rounded-full" />
+                </motion.div>
+              </motion.div>
             </div>
           </motion.div>
-        );
-     case "overview":
-  return (
-    <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.5 }}>
-      <h2 className="text-3xl text-black text-center font-bold mb-6">Dashboard Overview</h2>
-      <p className="text-gray-800 text-center mb-8 text-lg">
-        Welcome back! This is your <b>command center</b>, where you can <b>monitor performance</b>, track adoptions, and manage everything <b>effortlessly</b>.
-      </p>
+          
+          );
 
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-        {/* 📊 Statistics Card */}
-        <motion.div whileHover={{ scale: 1.07 }} whileTap={{ scale: 0.97 }} className="bg-gray-800 p-6 rounded-xl shadow-lg transition-all duration-300 hover:shadow-xl">
-          <div className="flex items-center justify-between mb-4">
-            <motion.div animate={{ scale: [1, 1.2, 1] }} transition={{ repeat: Infinity, duration: 2 }}>
-              <BarChart3 className="text-pink-500 w-7 h-7" />
-            </motion.div>
-            <h3 className="text-xl font-semibold">Statistics</h3>
-          </div>
-          <p className="text-gray-300">
-            Monitor <b>your activity</b>, adoptions, and achievements<b> all in one place</b> . 📈
-          </p>
-          <p className="text-sm text-green-400 mt-2">🔹 <b>+12% activity this week</b></p>
-        </motion.div>
-
-        {/* 🔔 Notifications Card */}
-        <motion.div whileHover={{ scale: 1.07 }} whileTap={{ scale: 0.97 }} className="bg-gray-800 p-6 rounded-xl shadow-lg transition-all duration-300 hover:shadow-xl">
-          <div className="flex items-center justify-between mb-4">
-            <motion.div animate={{ rotate: [0, 10, -10, 0] }} transition={{ repeat: Infinity, duration: 2 }}>
-              <Bell className="text-blue-500 w-7 h-7" />
-            </motion.div>
-            <h3 className="text-xl font-semibold">Notifications</h3>
-          </div>
-          <p className="text-gray-300">
-            Stay <b>updated</b> with the latest alerts, adoption requests, and important messages. 🔔
-          </p>
-          <p className="text-sm text-yellow-400 mt-2">📢 <b>2 new notifications</b></p>
-        </motion.div>
-
-        {/* 🛒 Orders Card */}
-        <motion.div whileHover={{ scale: 1.07 }} whileTap={{ scale: 0.97 }} className="bg-gray-800 p-6 rounded-xl shadow-lg transition-all duration-300 hover:shadow-xl">
-          <div className="flex items-center justify-between mb-4">
-            <motion.div animate={{ scale: [1, 1.2, 1] }} transition={{ repeat: Infinity, duration: 2 }}>
-              <ShoppingCart className="text-green-500 w-7 h-7" />
-            </motion.div>
-            <h3 className="text-xl font-semibold">Orders</h3>
-          </div>
-          <p className="text-gray-300">
-            Review <b>your recent adoptions and pending requests</b> in real-time. 🛒
-          </p>
-          <p className="text-sm text-purple-400 mt-2">✔ <b>3 pending approvals</b></p>
-        </motion.div>
-
-        {/* 👥 User Engagement Card */}
-        <motion.div whileHover={{ scale: 1.07 }} whileTap={{ scale: 0.97 }} className="bg-gray-800 p-6 rounded-xl shadow-lg transition-all duration-300 hover:shadow-xl">
-          <div className="flex items-center justify-between mb-4">
-            <motion.div animate={{scale: [1, 1.2, 1] }} transition={{ duration: 3, repeat: Infinity }}>
-              <Users className="text-orange-500 w-7 h-7" />
-            </motion.div>
-            <h3 className="text-xl font-semibold">User Engagement</h3>
-          </div>
-          <p className="text-gray-300">
-            Track <b>interactions with other adopters</b> and community activities. 👥
-          </p>
-          <p className="text-sm text-blue-400 mt-2">✨ <b>15 new messages</b></p>
-        </motion.div>
-
-        {/* ✅ Tasks Card */}
-        <motion.div whileHover={{ scale: 1.07 }} whileTap={{ scale: 0.97 }} className="bg-gray-800 p-6 rounded-xl shadow-lg transition-all duration-300 hover:shadow-xl">
-          <div className="flex items-center justify-between mb-4">
-            <motion.div animate={{ scale: [1, 1.2, 1] }} transition={{ repeat: Infinity, duration: 2 }}>
-              <CheckCircle className="text-yellow-500 w-7 h-7" />
-            </motion.div>
-            <h3 className="text-xl font-semibold">Tasks</h3>
-          </div>
-          <p className="text-gray-300">
-            Stay on top of <b>your pending adoptions and important tasks</b>. ✅
-          </p>
-          <p className="text-sm text-red-400 mt-2">⏳ <b>2 overdue tasks</b></p>
-        </motion.div>
-
-        {/* 📊 Insights Card */}
-        <motion.div whileHover={{ scale: 1.07 }} whileTap={{ scale: 0.97 }} className="bg-gray-800 p-6 rounded-xl shadow-lg transition-all duration-300 hover:shadow-xl">
-          <div className="flex items-center justify-between mb-4">
-            <motion.div animate={{ scale: [1, 1.2, 1] }} transition={{ repeat: Infinity, duration: 2 }}>
-              <Activity className="text-purple-500 w-7 h-7" />
-            </motion.div>
-            <h3 className="text-xl font-semibold">Insights</h3>
-          </div>
-          <p className="text-gray-300">
-            Get <b>personalized recommendations and adoption trends</b> based on your activity. 🔍
-          </p>
-          <p className="text-sm text-green-400 mt-2">📊 <b>Your adoptions increased by 8%</b></p>
-        </motion.div>
-      </div>
-    </motion.div>
-  );
+          case "overview":
+            return (
+              <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.5 }}>
+                <h2 className="text-3xl text-black text-center font-bold mb-6">Dashboard Overview</h2>
+                <p className="text-gray-800 text-center mb-8 text-lg">
+                  Welcome back! This is your <b>command center</b>, where you can <b>monitor performance</b>, track adoptions, and manage everything <b>effortlessly</b>.
+                </p>
+          
+                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+                  {/* 📊 Statistics Card */}
+                  <motion.div whileHover={{ scale: 1.07 }} whileTap={{ scale: 0.97 }} className="bg-gray-800 p-6 rounded-xl shadow-lg transition-all duration-300 hover:shadow-xl">
+                    <div className="flex items-center justify-between mb-4">
+                      <motion.div animate={{ scale: [1, 1.2, 1] }} transition={{ repeat: Infinity, duration: 2 }}>
+                        <BarChart3 className="text-pink-500 w-7 h-7" />
+                      </motion.div>
+                      <h3 className="text-xl font-semibold">Statistics</h3>
+                    </div>
+                    <p className="text-gray-300">
+                      Monitor <b>your activity</b>, adoptions, and achievements<b> all in one place</b> . 📈
+                    </p>
+                    <p className="text-sm text-green-400 mt-2">🔹 <b>+12% activity this week</b></p>
+                  </motion.div>
+          
+                  {/* 🔔 Notifications Card */}
+                  <motion.div whileHover={{ scale: 1.07 }} whileTap={{ scale: 0.97 }} className="bg-gray-800 p-6 rounded-xl shadow-lg transition-all duration-300 hover:shadow-xl">
+                    <div className="flex items-center justify-between mb-4">
+                      <motion.div animate={{ rotate: [0, 10, -10, 0] }} transition={{ repeat: Infinity, duration: 2 }}>
+                        <Bell className="text-blue-500 w-7 h-7" />
+                      </motion.div>
+                      <h3 className="text-xl font-semibold">Notifications</h3>
+                    </div>
+                    <p className="text-gray-300">
+                      Stay <b>updated</b> with the latest alerts, adoption requests, and important messages. 🔔
+                    </p>
+                    <p className="text-sm text-yellow-400 mt-2">📢 <b>2 new notifications</b></p>
+                  </motion.div>
+          
+                  {/* 🛒 Orders Card */}
+                  <motion.div whileHover={{ scale: 1.07 }} whileTap={{ scale: 0.97 }} className="bg-gray-800 p-6 rounded-xl shadow-lg transition-all duration-300 hover:shadow-xl">
+                    <div className="flex items-center justify-between mb-4">
+                      <motion.div animate={{ scale: [1, 1.2, 1] }} transition={{ repeat: Infinity, duration: 2 }}>
+                        <ShoppingCart className="text-green-500 w-7 h-7" />
+                      </motion.div>
+                      <h3 className="text-xl font-semibold">Orders</h3>
+                    </div>
+                    <p className="text-gray-300">
+                      Review <b>your recent adoptions and pending requests</b> in real-time. 🛒
+                    </p>
+                    <p className="text-sm text-purple-400 mt-2">✔ <b>3 pending approvals</b></p>
+                  </motion.div>
+          
+                  {/* 👥 User Engagement Card */}
+                  <motion.div whileHover={{ scale: 1.07 }} whileTap={{ scale: 0.97 }} className="bg-gray-800 p-6 rounded-xl shadow-lg transition-all duration-300 hover:shadow-xl">
+                    <div className="flex items-center justify-between mb-4">
+                      <motion.div animate={{scale: [1, 1.2, 1] }} transition={{ duration: 3, repeat: Infinity }}>
+                        <Users className="text-orange-500 w-7 h-7" />
+                      </motion.div>
+                      <h3 className="text-xl font-semibold">User Engagement</h3>
+                    </div>
+                    <p className="text-gray-300">
+                      Track <b>interactions with other adopters</b> and community activities. 👥
+                    </p>
+                    <p className="text-sm text-blue-400 mt-2">✨ <b>15 new messages</b></p>
+                  </motion.div>
+          
+                  {/* ✅ Tasks Card */}
+                  <motion.div whileHover={{ scale: 1.07 }} whileTap={{ scale: 0.97 }} className="bg-gray-800 p-6 rounded-xl shadow-lg transition-all duration-300 hover:shadow-xl">
+                    <div className="flex items-center justify-between mb-4">
+                      <motion.div animate={{ scale: [1, 1.2, 1] }} transition={{ repeat: Infinity, duration: 2 }}>
+                        <CheckCircle className="text-yellow-500 w-7 h-7" />
+                      </motion.div>
+                      <h3 className="text-xl font-semibold">Tasks</h3>
+                    </div>
+                    <p className="text-gray-300">
+                      Stay on top of <b>your pending adoptions and important tasks</b>. ✅
+                    </p>
+                    <p className="text-sm text-red-400 mt-2">⏳ <b>2 overdue tasks</b></p>
+                  </motion.div>
+          
+                  {/* 📊 Insights Card */}
+                  <motion.div whileHover={{ scale: 1.07 }} whileTap={{ scale: 0.97 }} className="bg-gray-800 p-6 rounded-xl shadow-lg transition-all duration-300 hover:shadow-xl">
+                    <div className="flex items-center justify-between mb-4">
+                      <motion.div animate={{ scale: [1, 1.2, 1] }} transition={{ repeat: Infinity, duration: 2 }}>
+                        <Activity className="text-purple-500 w-7 h-7" />
+                      </motion.div>
+                      <h3 className="text-xl font-semibold">Insights</h3>
+                    </div>
+                    <p className="text-gray-300">
+                      Get <b>personalized recommendations and adoption trends</b> based on your activity. 🔍
+                    </p>
+                    <p className="text-sm text-green-400 mt-2">📊 <b>Your adoptions increased by 8%</b></p>
+                  </motion.div>
+                </div>
+              </motion.div>
+            );
+        
     }
   };
 
@@ -578,12 +758,24 @@ case "recent-activity":
 
       {/* Main Content */}
       <div className="flex items-center justify-between p-4">
-        <div className="flex items-center gap-4">
-          <button onClick={() => setIsMenuOpen(true)} className="">
-            <IconMenu className="text-gray-800" />
-          </button>
-        </div>
-      </div>
+  <div className="flex items-center gap-4">
+    <button 
+      onClick={() => setIsMenuOpen(true)} 
+      className="p-2 rounded-lg transition-all duration-300 ease-in-out hover:bg-gray-200 hover:text-gray-900">
+      <IconMenu className="text-gray-800" />
+    </button>
+  </div>
+
+  {/* Logout Button */}
+  <div className="flex items-center gap-4">
+    <button
+      onClick={handleLogout}
+      className="p-2 rounded-lg transition-all duration-300 ease-in-out hover:bg-gray-200 hover:text-white">
+      <IconLogout className="text-gray-800" />
+    </button>
+  </div>
+</div>
+
 
       <div className="p-4">
         {renderContent()}
