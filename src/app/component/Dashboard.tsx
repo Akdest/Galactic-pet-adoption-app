@@ -167,11 +167,13 @@ const Dashboard = () => {
 >
   {/* Profile and Contact Information */}
   <div className="flex flex-col items-center gap-6 mb-6"> {/* Adjust layout for sm, md, lg */}
-    <img
-      src="/hfive.jpg"
-      alt="Profile"
-      className="rounded-full w-24 h-24 object-cover border-4 border-indigo-600"
-    />
+  <div className="relative w-48 h-48 rounded-full overflow-hidden border-4 border-transparent shadow-md bg-gradient-to-r from-purple-600  to-pink-400 animate-border">
+            <img
+                src="https://avatars.githubusercontent.com/u/114203535?v=4"
+                alt="Profile Picture"
+                className="w-full h-full object-cover"
+            />
+        </div>
     <div className="flex flex-col items-center justify-center text-center sm:text-left">
       <h3 className="text-xl text-black font-semibold">Ayush Kumar</h3>
       <p className="text-gray-800">ayushkr0104@gmail.com</p>
@@ -218,18 +220,29 @@ const Dashboard = () => {
                 <span className="text-xl text-gray-700">Change Password</span>
               </div>
       
-              {/* Change Password */}
-              <div className="flex flex-col items-center justify-center cursor-pointer hover:bg-gray-200 p-6 rounded-xl shadow-lg aspect-w-1 aspect-h-1 transform transition-all duration-300 ease-in-out hover:scale-105">
-              <FaShoppingCart className="text-4xl text-blue-600 mb-2" />
-               
-                <span className="text-xl text-gray-700">Your Cart</span>
-              </div>
+              {/* Cart */}
+              <motion.li
+  key="cart"
+  onClick={() => { setActiveTab("cart"); setIsMenuOpen(false); }}
+  className="flex flex-col items-center justify-center cursor-pointer hover:bg-gray-200 p-6 rounded-xl shadow-lg aspect-w-1 aspect-h-1 transform transition-all duration-300 ease-in-out hover:scale-105"
+  whileHover={{ scale: 1.05 }}
+  whileTap={{ scale: 0.95 }}
+>
+  <FaShoppingCart className="text-4xl text-blue-500 mb-2" />
+  <span className="text-xl text-gray-700">Your Cart</span>
+</motion.li>
       
               {/* View Orders */}
-              <div className="flex flex-col items-center justify-center cursor-pointer hover:bg-gray-200 p-6 rounded-xl shadow-lg aspect-w-1 aspect-h-1 transform transition-all duration-300 ease-in-out hover:scale-105">
-                <FaListAlt className="text-4xl text-green-500 mb-2" />
-                <span className="text-xl text-gray-700">View Orders</span>
-              </div>
+              <motion.li
+  key="cart"
+  onClick={() => { setActiveTab("recent-activity"); setIsMenuOpen(false); }}
+  className="flex flex-col items-center justify-center cursor-pointer hover:bg-gray-200 p-6 rounded-xl shadow-lg aspect-w-1 aspect-h-1 transform transition-all duration-300 ease-in-out hover:scale-105"
+  whileHover={{ scale: 1.05 }}
+  whileTap={{ scale: 0.95 }}
+>
+  <FaListAlt className="text-4xl text-green-500 mb-2" />
+  <span className="text-xl text-gray-700">Your Orders</span>
+</motion.li>
       
               {/* Log Out */}
              <Link
@@ -523,9 +536,9 @@ case "recent-activity":
         case "analytics":
           return (
             <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.5 }}>
-            <h2 className="text-3xl text-white text-center font-bold mb-4">📊 Analytics Dashboard</h2>
-            <p className="text-gray-400 text-center mb-8">
-              Track **adoptions, revenue, and notifications** with real-time updates.
+            <h2 className="text-3xl text-black text-center font-bold mb-4">📊 Analytics Dashboard</h2>
+            <p className="text-gray-800 text-center mb-8">
+              Track <b>adoptions, revenue, and notifications</b> with real-time updates.
             </p>
           
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
